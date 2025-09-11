@@ -1,3 +1,15 @@
+<?php
+require "ApiHandler.php";
+
+$apiHandler = new RequestHandler();
+
+$apiHandler->loadEnv();
+
+$imgData = $apiHandler->SearchPhoto(1, "tree");
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +23,18 @@
 
         <div id="main">
             <div class="main_container">
+
+
                 <div class="topbar"> 
                     <input class="search_top" name="Sök" type="search" />
                 </div>
 
-                <div class="image_box side_margin">
+                <div class="image_box">
+                    <?php
+                    foreach ($imgData["results"] as $img){
+                        echo "<div><img src=" . $img["urls"]["thumb"] . "></div>";
+                    }
+                    ?>
                     <div>
                         <img src="bilder/waves.jpg">
 
@@ -47,16 +66,4 @@
     ?>
 </body>
 </html>
-<?php
-require "ApiHandler.php";
 
-$apiHandler = new RequestHandler();
-
-$apiHandler->loadEnv();
-
-$imgData = $apiHandler->SearchPhoto(1, "tree");
-
-foreach ($imgData["results"] as $img){
-    echo "<img src=" . $img["urls"]["thumb"] . ">";
-}
-?>

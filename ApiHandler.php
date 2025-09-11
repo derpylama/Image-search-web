@@ -6,10 +6,8 @@
         function __construct()
         {
             $this->envFilePath = dirname(__DIR__, 3) . '/enviroment/.env';
-
             $this->LoadEnv();
         }
-
 
         public function LoadEnv(){
             if (!file_exists($this->envFilePath)) {
