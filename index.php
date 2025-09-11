@@ -1,3 +1,13 @@
+    <?php
+    require "ApiHandler.php";
+    
+    $apiHandler = new RequestHandler();
+    
+    $apiHandler->loadEnv();
+    
+    $imgData = $apiHandler->GetPhotoData("Nyvq2juw4_o");
+    
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bildsök</title>
     <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
 </head>
 <body>
     <div>
@@ -47,16 +58,3 @@
     ?>
 </body>
 </html>
-<?php
-require "ApiHandler.php";
-
-$apiHandler = new RequestHandler();
-
-$apiHandler->loadEnv();
-
-$imgData = $apiHandler->SearchPhoto(1, "tree");
-
-foreach ($imgData["results"] as $img){
-    echo "<img src=" . $img["urls"]["thumb"] . ">";
-}
-?>
