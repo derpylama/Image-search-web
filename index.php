@@ -17,6 +17,7 @@ $imgData = $apiHandler->SearchPhoto(1, "tree");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bildsök</title>
     <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
 </head>
 <body>
     <div>
@@ -26,12 +27,14 @@ $imgData = $apiHandler->SearchPhoto(1, "tree");
 
 
                 <div class="topbar"> 
-                    <input class="search_top" name="Sök" type="search" />
+                    <input id="search_top" name="q" type="search" placeholder="Sök" />
+
                 </div>
 
                 <div class="image_box">
                     <?php
                     foreach ($imgData["results"] as $img){
+                        
                         echo "<div><img src=" . $img["urls"]["thumb"] . "></div>";
                     }
                     ?>
