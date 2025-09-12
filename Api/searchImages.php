@@ -6,12 +6,12 @@ header('Content-Type: application/json');
 $handler = new RequestHandler();
 
 try{
-    if(isset($_GET["query"]) && isset($_GET["pageNum"]) && isset($_GET["perPage"])){
+    if(isset($_GET["query"]) && isset($_GET["pageNum"]) && isset($_GET["perPage"]) && isset($_GET["orderBy"])){
         $query = $_GET["query"];
         $pageNum = (int)$_GET["pageNum"];
         $perPage = (int)$_GET["perPage"];
 
-        $data = $handler->SearchPhoto($pageNum, $query, $perPage);
+        $data = $handler->SearchPhoto($pageNum, $query, $perPage, $_GET["orderBy"]);
         echo json_encode($data);
     }
     else

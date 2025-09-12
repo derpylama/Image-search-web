@@ -35,9 +35,12 @@
             }
         }
 
-        public function GetRandomImages(int $imageAmount = 30): array{
+        public function GetRandomImages(int $imageAmount = 30, string $orientation = "", string $searchQuery = ""): array{
             $photoApiEndpoint = self::BASEAPIURL . "/photos/random?count=" . $imageAmount;
 
+            if ($orientation != "" && $searchQuery != ""){
+                $photoApiEndpoint . "&orientation=" . $orientation . "&query=" . $searchQuery;
+            }
             $accessKey = $_ENV["access_key"];
 
             if(!$accessKey){
@@ -59,8 +62,8 @@
             return $data;
         }
 
-        public function SearchPhoto(int $pageNum = 1, string $searchQuery, int $perPage = 30): array{
-            $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage;
+        public function SearchPhoto(int $pageNum = 1, string $searchQuery, int $perPage = 30, string $orderBy = "", string $orientation = ""): array{
+            $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage . "&orderBy=" . $orderBy . "&orientation=" . $orientation;
 
             $accessKey = $_ENV["access_key"];
 
