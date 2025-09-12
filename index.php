@@ -5,7 +5,7 @@
     
     $apiHandler->loadEnv();
     
-    $imgData = $apiHandler->GetRandomImages();
+    $imgData = $apiHandler->SearchPhoto(1, "tree", 30);
     
     ?>
 
@@ -32,7 +32,7 @@
 
                 <div class="image_box">
                     <?php
-                    foreach ($imgData as $img){
+                    foreach ($imgData["results"] as $img){
                         echo "<div><img src=" . $img["urls"]["thumb"] . "></div>";
                     }
                     ?>
