@@ -29,12 +29,21 @@ search_input.addEventListener("input", (event) => {
     var search_query = event.target.value
     main_body.appendChild(large_image_box)
 
-
-
     console.log(search_query)
 
-
-
+    fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse JSON response
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
 }
 
 )
@@ -60,19 +69,3 @@ image_box_list.addEventListener('click', (event) => {
 }
 
 )
-window.onload = function () {
-    fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); // Parse JSON response
-    })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-}
-

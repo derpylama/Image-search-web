@@ -5,7 +5,7 @@
 
         function __construct()
         {
-            $this->envFilePath = dirname(__DIR__, 2) . '/enviroment/.env';
+            $this->envFilePath = dirname(__DIR__, 3) . '/enviroment/.env';
             $this->LoadEnv();
         }
 

@@ -60,11 +60,5 @@
         </div>
 
     </div>
-
-    <?php 
-    echo "Bild" . "\n";
-    echo "Php print"
-    
-    ?>
 </body>
 </html>
