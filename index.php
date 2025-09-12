@@ -8,6 +8,7 @@
     $imgData = $apiHandler->GetPhotoData("Nyvq2juw4_o");
     
     ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,11 +23,18 @@
 
         <div id="main">
             <div class="main_container">
+
+
                 <div class="topbar"> 
                     <input class="search_top" name="Sök" type="search" />
                 </div>
 
-                <div class="image_box side_margin">
+                <div class="image_box">
+                    <?php
+                    foreach ($imgData["results"] as $img){
+                        echo "<div><img src=" . $img["urls"]["thumb"] . "></div>";
+                    }
+                    ?>
                     <div>
                         <img src="bilder/waves.jpg">
 
