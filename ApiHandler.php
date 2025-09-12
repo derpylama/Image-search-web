@@ -59,8 +59,8 @@
             return $data;
         }
 
-        public function SearchPhoto(int $pageNum = 1, string $searchQuery): array{
-            $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery;
+        public function SearchPhoto(int $pageNum = 1, string $searchQuery, int $perPage = 30): array{
+            $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage;
 
             $accessKey = $_ENV["access_key"];
 
@@ -83,6 +83,27 @@
             return $data;
         }
         
+        public function GetPhotoData(string $photoID): array{
+            $photoGetDataEndpoint = self::BASEAPIURL . "/photos/" . $photoID;
+
+            $accessKey = $_ENV["access_key"];
+
+            if(!$accessKey){
+                throw new Exception("access_key not set in .env file");
+            }
+            
+            $curl = curl_init($photoGetDataEndpoint);
+
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_HTTPHEADER, ['Authorization: Client-ID ' . $accessKey]);
+
+            $response = curl_exec($curl);
+            curl_close($curl);
+
+            $data = json_decode($response, true);
+
+            return $data;
+        }
     }
 
 ?>
