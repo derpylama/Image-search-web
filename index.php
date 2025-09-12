@@ -1,14 +1,13 @@
-<?php
-require "ApiHandler.php";
-
-$apiHandler = new RequestHandler();
-
-$apiHandler->loadEnv();
-
-$imgData = $apiHandler->SearchPhoto(1, "tree");
-
-
-?>
+    <?php
+    require "ApiHandler.php";
+    
+    $apiHandler = new RequestHandler();
+    
+    $apiHandler->loadEnv();
+    
+    $imgData = $apiHandler->SearchPhoto(1, "tree", 30);
+    
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +16,8 @@ $imgData = $apiHandler->SearchPhoto(1, "tree");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bildsök</title>
     <link rel="stylesheet" href="index.css">
-    <script defer src="index.js"></script>
+    <script src="index.js" defer></script>
+
 </head>
 <body>
     <div>
@@ -27,7 +27,8 @@ $imgData = $apiHandler->SearchPhoto(1, "tree");
 
 
                 <div class="topbar"> 
-                    <input class="search_top" name="Sök" type="search" />
+                    <input id="search_top" name="q" type="search" placeholder="Sök" />
+
                 </div>
 
                 <div class="image_box">
@@ -67,4 +68,3 @@ $imgData = $apiHandler->SearchPhoto(1, "tree");
     ?>
 </body>
 </html>
-
