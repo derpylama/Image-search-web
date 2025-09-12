@@ -17,6 +17,7 @@ $imgData = $apiHandler->SearchPhoto(1, "tree");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bildsök</title>
     <link rel="stylesheet" href="index.css">
+    <script defer src="index.js"></script>
 </head>
 <body>
     <div>
