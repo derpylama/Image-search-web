@@ -6,9 +6,13 @@ header('Content-Type: application/json');
 $handler = new RequestHandler();
 
 try{
-    if(isset($_GET["count"])){
+    if(isset($_GET["count"]) && isset($_GET["query"]) && isset($_GET["orientation"])){
         $count = $_GET["count"];
-        $data = $handler -> GetRandomImages($count);
+        $query = $_GET["query"];
+        $orientation = $_GET["orientation"];
+
+        $data = $handler -> GetRandomImages($count, $orientation, $query);
+        http_response_code(200);
     }
     else{
         $data = $handler -> GetRandomImages();
