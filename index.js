@@ -1,3 +1,13 @@
+
+const searchInput = document.querySelector('.search_top');
+
+searchInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        const searchValue = searchInput.value;
+        console.log('Sökterm:', searchValue);
+    }
+});
+
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
 
@@ -65,3 +75,4 @@ window.onload = function () {
       console.error('There was a problem with the fetch operation:', error);
     });
 }
+

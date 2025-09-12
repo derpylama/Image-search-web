@@ -17,6 +17,7 @@
     <title>Bildsök</title>
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
+
 </head>
 <body>
     <div>
