@@ -1,14 +1,13 @@
-<?php
-require "ApiHandler.php";
-
-$apiHandler = new RequestHandler();
-
-$apiHandler->loadEnv();
-
-$imgData = $apiHandler->SearchPhoto(1, "tree");
-
-
-?>
+    <?php
+    require "ApiHandler.php";
+    
+    $apiHandler = new RequestHandler();
+    
+    $apiHandler->loadEnv();
+    
+    $imgData = $apiHandler->GetRandomImages();
+    
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,8 +32,7 @@ $imgData = $apiHandler->SearchPhoto(1, "tree");
 
                 <div class="image_box">
                     <?php
-                    foreach ($imgData["results"] as $img){
-                        
+                    foreach ($imgData as $img){
                         echo "<div><img src=" . $img["urls"]["thumb"] . "></div>";
                     }
                     ?>
@@ -69,4 +67,3 @@ $imgData = $apiHandler->SearchPhoto(1, "tree");
     ?>
 </body>
 </html>
-
