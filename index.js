@@ -1,4 +1,8 @@
+
+const searchInput = document.querySelector('#search_top');
+
 const searchInput = document.querySelector('.search_top');
+
 
 var wrapper = new ApiWrapper()
 
@@ -16,13 +20,20 @@ var main_body = document.getElementsByClassName("main_container")[0]
 
 
 
-
 var image_box_list = document.getElementsByClassName("image_box")[0]
 var p = document.createElement("p4")
 
 p.innerText = "Country of origin:"
 
 
+
+
+search_input.addEventListener("keydown", (event) => {
+  if (event.key === 'Enter') {
+    var search_query = event.target.value
+
+    const query = document.querySelector("#search_top").value;
+    fetch(`Api/searchImages.php?query=${encodeURIComponent(query)}&pageNum=1&perPage=30`)
 
 
 
@@ -33,6 +44,7 @@ p.innerText = "Country of origin:"
     console.log(data)
     /*
     fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
+
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -45,7 +57,12 @@ p.innerText = "Country of origin:"
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
+
+  }
+}
+
 }*/
+
 
 
 image_box_list.addEventListener('click', (event) => {
@@ -55,11 +72,13 @@ image_box_list.addEventListener('click', (event) => {
 
     var image_var = document.createElement("img")
     var image = event.target.src
+   
 
     var text_container = document.createElement("div")
     text_container.classList = ("text_image_container")
     text_container.appendChild(p)
     
+
 
     image_var.src = image
     if (document.getElementsByClassName("large_box")[0] != null) {
@@ -67,13 +86,22 @@ image_box_list.addEventListener('click', (event) => {
     }
     
     if (event.target.tagName == "IMG") {
+
+      large_image_box.appendChild(image_var)
+        
+      main_body.appendChild(large_image_box)
+        
+      
+
+      
+
         large_image_box.appendChild(image_var)
         large_image_box.appendChild(text_container)
         main_body.appendChild(large_image_box)
+
     }
     
+    
 
-
-}
-
+  }
 )
