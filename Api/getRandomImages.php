@@ -13,10 +13,12 @@ try{
 
         $data = $handler -> GetRandomImages($count, $orientation, $query);
         http_response_code(200);
+        echo json_encode($data);
     }
     else{
         $data = $handler -> GetRandomImages();
         http_response_code(200);
+        echo json_encode($data);
     }
 }
 catch(Exception $e) {
@@ -27,5 +29,5 @@ catch(Exception $e) {
     ]);
 }
 
-echo json_encode($data);
+
 ?>
