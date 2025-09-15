@@ -4,8 +4,7 @@
     $apiHandler = new RequestHandler();
     
     $apiHandler->loadEnv();
-    
-    $imgData = $apiHandler->SearchPhoto(1, "tree", 30);
+
     
     ?>
 
@@ -52,22 +51,6 @@
                 </div>
                 <div class="image_box">
 
-                    <div>
-                        <img src="bilder/waves.jpg">
-
-                    </div>
-                    <div>
-                        <img src="bilder/Landskapsbild.png">
-                    </div>
-                    <div>
-                        <img src="bilder/Katt.jpg">
-
-                    </div>
-                    <div>
-                        <img src="bilder/Fönsterbräda sktech sida.PNG">
-                    </div>
-                    <div>5</div>
-                    <div>6</div>
                 </div>
             </div>
             
