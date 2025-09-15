@@ -25,11 +25,29 @@
             <div class="main_container">
 
 
-                <div class="topbar"> 
+                <div id="topbar"> 
+                    <div class="top_button_container">
+                        
+                    </div>
                     <input id="search_top" name="q" type="search" placeholder="Sök" />
+                    
+                    <div class="top_button_container">
+                        <select name="sort" id="select_sort">
+                            <option value="relevant">Relevant</option>
+                            <option value="latest">Latest</option>
+                        </select>
+                        <select name="sort" id="select_sort">
+                            <option value="landscape">Landscape</option>
+                            <option value="portrait">Portrait</option>
+                            <option value="squareish">Squareish</option>
 
+                        </select>
+
+                    </div>
+                    
+
+                    </div>
                 </div>
-
                 <div class="image_box">
                     <?php
                     foreach ($imgData["results"] as $img){
