@@ -1,5 +1,4 @@
-
-const searchInput = document.querySelector('.search_top');
+const searchInput = document.querySelector('#search_top');
 
 searchInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -16,7 +15,6 @@ var large_image_box = document.createElement("div")
 
 large_image_box.classList = ("border_radius_large large_box")
 
-
 var image_box_list = document.getElementsByClassName("image_box")[0]
 var p = document.createElement("p4")
 p.innerText = "Country of origin:"
@@ -24,14 +22,12 @@ large_image_box.appendChild(p)
 
 
 
-
-search_input.addEventListener("input", (event) => {
+search_input.addEventListener("keydown", (event) => {
+  if (event.key === 'Enter') {
     var search_query = event.target.value
-    main_body.appendChild(large_image_box)
 
-    console.log(search_query)
-
-    fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
+    const query = document.querySelector("#search_top").value;
+    fetch(`Api/searchImages.php?query=${encodeURIComponent(query)}&pageNum=1&perPage=30`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -44,6 +40,7 @@ search_input.addEventListener("input", (event) => {
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
+  }
 }
 
 )
@@ -52,20 +49,19 @@ image_box_list.addEventListener('click', (event) => {
     console.log(event.target.tagName)
     var image_var = document.createElement("img")
     var image = event.target.src
-
+    
     image_var.src = image
     if (event.target.tagName == "IMG") {
-        large_image_box.appendChild(image_var)
+      large_image_box.appendChild(image_var)
         
-        main_body.appendChild(large_image_box)
+      main_body.appendChild(large_image_box)
         
+      
 
-
-        
+      
     }
     
+    
 
-
-}
-
+  }
 )
