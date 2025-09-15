@@ -92,6 +92,17 @@ p4 {
     
 
 }
+
+
+
+
+
+
+
+
+
+
+
 select {
     outline: none;
     background-color: rgb(153, 219, 142);
@@ -99,6 +110,10 @@ select {
     height: 60px;
 }
 
+.custom_select {
+    cursor: pointer;
+    width: 40px;
+}
 
 
 /*Container for image and image design*/

@@ -32,23 +32,22 @@
                         
                     </div>
                     <input id="search_top" name="q" type="search" placeholder="Sök" />
-                    
+
                     <div class="top_button_container">
                         <select name="sort" id="select_sort">
                             <option value="relevant">Relevant</option>
                             <option value="latest">Latest</option>
                         </select>
-                        <select name="sort" id="select_sort">
-                            <option value="landscape">Landscape</option>
-                            <option value="portrait">Portrait</option>
-                            <option value="squareish">Squareish</option>
-
+                        <select name="searchBy" id="frame_sort">
+                            <option value="all">&#9675All</option>
+                            <option value="landscape">&#9645Landscape</option>
+                            <option value="portrait">&#9647Portrait</option>
+                            <option value="squareish">&#9635Squareish</option>
                         </select>
-
                     </div>
-                    
 
-                    </div>
+
+
                 </div>
                 <div class="image_box">
 

@@ -27,25 +27,7 @@ p.innerText = "Country of origin:"
 
 
 
-    var data = wrapper.SearchImages(search_query, 1, 30, "relevant")
 
-
-    console.log(data)
-    /*
-    fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); // Parse JSON response
-    })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-}*/
 
 
 image_box_list.addEventListener('click', (event) => {
@@ -77,3 +59,59 @@ image_box_list.addEventListener('click', (event) => {
 }
 
 )
+
+/*
+class dropMenu {
+  constructor() {
+
+  }
+
+
+}
+
+
+
+
+
+
+const dropdown = document.querySelector(".dropdown_menu")
+
+
+
+
+function clicked_dropdown() {
+  console.log(dropdown.classList)
+  if (dropdown.classList.contains("display_container")) {
+    console.log("Removed")
+    dropdown.classList.remove("display_container")
+
+  }
+  else {
+    dropdown.classList += (" display_container")
+    console.log("Added class")
+  }
+  console.log(dropdown.classList)
+
+}
+
+function clickedDropdown(menuId) {
+  var dropdownMenu = getElementById(menuId)
+
+}
+
+
+*/
+
+/*
+window.onclick = function(event) {
+  if (!event.target.matches("select_button_dropdown")) {
+    dropdown_elements = document.getElementsByClassName("dropdown_menu")
+    var i
+    for (i = 0; i <dropdown_elements.length; i++) {
+      if (dropdown_elements[i].classList.contains("display_container")) {
+        dropdown_elements[i].classList.remove("display_container")
+      }
+    }
+  }
+}
+*/
