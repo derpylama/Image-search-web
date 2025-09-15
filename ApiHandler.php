@@ -63,8 +63,13 @@
         }
 
         public function SearchPhoto(int $pageNum = 1, string $searchQuery, int $perPage = 30, string $orderBy = "", string $orientation = ""): array{
-            $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage . "&orderBy=" . $orderBy . "&orientation=" . $orientation;
-
+            if($orientation != ""){
+                $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage . "&order_by=" . $orderBy . "&orientation=" . $orientation;
+            }
+            else{
+                $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage . "&order_by=" . $orderBy;   
+            }
+            
             $accessKey = $_ENV["access_key"];
 
             if(!$accessKey){
