@@ -16,7 +16,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bildsök</title>
     <link rel="stylesheet" href="index.css">
+    <script src="apiWrapper.js"></script>
     <script src="index.js" defer></script>
+
 </head>
 <body>
     <div>
@@ -49,11 +51,7 @@
                     </div>
                 </div>
                 <div class="image_box">
-                    <?php
-                    foreach ($imgData["results"] as $img){
-                        echo "<div><img src=" . $img["urls"]["thumb"] . "></div>";
-                    }
-                    ?>
+
                     <div>
                         <img src="bilder/waves.jpg">
 
@@ -77,11 +75,5 @@
         </div>
 
     </div>
-
-    <?php 
-    echo "Bild" . "\n";
-    echo "Php print"
-    
-    ?>
 </body>
 </html>

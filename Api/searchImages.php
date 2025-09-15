@@ -6,19 +6,27 @@ header('Content-Type: application/json');
 $handler = new RequestHandler();
 
 try{
-    if(isset($_GET["query"]) && isset($_GET["pageNum"]) && isset($_GET["perPage"])){
+    if(isset($_GET["query"]) && isset($_GET["pageNum"]) && isset($_GET["perPage"]) && isset($_GET["orderBy"]) && isset($_GET["orientation"])){
         $query = $_GET["query"];
         $pageNum = (int)$_GET["pageNum"];
         $perPage = (int)$_GET["perPage"];
 
-        $data = $handler->SearchPhoto($pageNum, $query, $perPage);
+        $data = $handler->SearchPhoto($pageNum, $query, $perPage, $_GET["orderBy"], $_GET["orientation"]);
+        echo json_encode($data);
+    }
+    else if(isset($_GET["query"]) && isset($_GET["pageNum"]) && isset($_GET["perPage"]) && isset($_GET["orderBy"])){
+        $query = $_GET["query"];
+        $pageNum = (int)$_GET["pageNum"];
+        $perPage = (int)$_GET["perPage"];
+
+        $data = $handler->SearchPhoto($pageNum, $query, $perPage, $_GET["orderBy"]);
         echo json_encode($data);
     }
     else
     {
         echo json_encode([
             "status" => "error",
-            "message" => "Missing Query, Pagenum or perPage in request",
+            "message" => "Missing parameter in request",
             "code" => 400
         ]);
     }
