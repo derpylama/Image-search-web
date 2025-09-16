@@ -53,28 +53,11 @@ search_input.addEventListener("keydown", async (event) => {
 
 
     console.log(data)
-  }
-    /*
-    fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); // Parse JSON response
     })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-    */
-})
 
       imageBox.appendChild(div)
-    });
-  }
-})
+    };
+  })
 
 
 
@@ -154,13 +137,6 @@ main.addEventListener('click', (event) => {
 }
 
 )
-function clickOutside(element) {
-  document.body.addEventListener("click", event => {
-    if (!element.contains(event.target))
-
-  })
-}
-
 
 /*
 class dropMenu {
