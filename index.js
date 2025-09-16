@@ -50,12 +50,8 @@ search_input.addEventListener("keydown", async (event) => {
 
       div.appendChild(img)
       div.appendChild(photoIDCon)
-
-
-    console.log(data)
-    })
-
       imageBox.appendChild(div)
+    })
     };
   })
 
@@ -138,7 +134,7 @@ main.addEventListener('click', (event) => {
 function clickOutside(element) {
   document.body.addEventListener("click", event => {
     if (!element.contains(event.target)){
-      
+
     }
   })
 }
