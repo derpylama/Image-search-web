@@ -14,6 +14,7 @@ searchInput.addEventListener('keydown', function(event) {
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
 
+var main = document.getElementById("main")
 
 
 
@@ -39,6 +40,7 @@ search_input.addEventListener("keydown", (event) => {
 
 
     console.log(data)
+  }
     /*
     fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
     .then(response => {
@@ -53,7 +55,8 @@ search_input.addEventListener("keydown", (event) => {
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
-}*/
+    */
+})
 
 
 image_box_list.addEventListener('click', (event) => {
@@ -74,6 +77,7 @@ image_box_list.addEventListener('click', (event) => {
     image_var.src = image
     if (document.getElementsByClassName("large_box")[0] != null) {
         main_body.removeChild(document.querySelector(".large_box"))
+        console.log("Removed large box")
     }
     
     if (event.target.tagName == "IMG") {
@@ -96,6 +100,22 @@ image_box_list.addEventListener('click', (event) => {
 
   }
 )
+
+
+
+main.addEventListener('click', (event) => {
+  imageElement = document.querySelector(".large_box")
+  if (!imageElement == null) {
+    console.log(event, "TEST")
+  }
+  console.log("Text")
+  
+
+}
+
+)
+
+
 
 /*
 class dropMenu {
@@ -151,4 +171,5 @@ window.onclick = function(event) {
     }
   }
 }
+
 */
