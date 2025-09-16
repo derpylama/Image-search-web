@@ -1,6 +1,5 @@
 <?php
-require "../ApiHandler.php";
-
+require "../apihandler.php";
 header('Content-Type: application/json');
 
 $handler = new RequestHandler();

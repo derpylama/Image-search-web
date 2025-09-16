@@ -1,5 +1,6 @@
 
-const searchInput = document.querySelector('#search_top');
+const imageBox = document.querySelector(".image_box");
+
 
 var wrapper = new ApiWrapper()
 
@@ -13,87 +14,92 @@ searchInput.addEventListener('keydown', function(event) {
 
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
-
-
-
-
 var image_box_list = document.getElementsByClassName("image_box")[0]
-var p = document.createElement("p4")
-
-p.innerText = "Country of origin:"
 
 
-
-
-search_input.addEventListener("keydown", (event) => {
+search_input.addEventListener("keydown", async (event) => {
   if (event.key === 'Enter') {
+
+    imageBox.replaceChildren();
+
     var search_query = event.target.value
 
     const query = document.querySelector("#search_top").value;
-    fetch(`Api/searchImages.php?query=${encodeURIComponent(query)}&pageNum=1&perPage=30`)
+
+    var photos = await wrapper.SearchImages(search_query, 1, 30, "relevant")
+    
+    photos["results"].forEach(element => {
+      
+      var img = document.createElement("img")
+      var div = document.createElement("div")
+      var photoIDCon = document.createElement("p")
+      photoIDCon.style.display = "none"
+      photoIDCon.id = "photoID"
 
 
+      photoIDCon.innerHTML = element["id"]
 
+      img.src = element["urls"]["thumb"]
 
-    var data = wrapper.SearchImages(search_query, 1, 30, "relevant")
+      div.appendChild(img)
+      div.appendChild(photoIDCon)
 
-
-    console.log(data)
-    /*
-    fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); // Parse JSON response
-    })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
+      imageBox.appendChild(div)
     });
-}*/
+  }
+})
 
 
-image_box_list.addEventListener('click', (event) => {
-    console.log(event.target.tagName)
-    var large_image_box = document.createElement("div")
-    large_image_box.classList = ("border_radius_large large_box")
 
-    var image_var = document.createElement("img")
-    var image = event.target.src
-   
 
-    var text_container = document.createElement("div")
-    text_container.classList = ("text_image_container")
-    text_container.appendChild(p)
+image_box_list.addEventListener('click', async (event) => {
+  
+  if (event.target.tagName == "IMG") {
+      //Creates the popup box
+      var large_image_box = document.createElement("div")
+      large_image_box.classList = ("border_radius_large large_box")
     
+      var image_var = document.createElement("img")
+      
+      //Sets the image to the lower res tumbnail one while it waits for the api to give the higher res one
+      image_var.src = event.target.src
+      var text_container = document.createElement("div")
+      text_container.classList = ("text_image_container")
+      var image = event.target
+      let photoID = null;
 
-
-    image_var.src = image
-    if (document.getElementsByClassName("large_box")[0] != null) {
-        main_body.removeChild(document.querySelector(".large_box"))
-    }
-    
-    if (event.target.tagName == "IMG") {
-
+      //Gets the photo id from the p tag in the image div
+      Array.from(image.parentElement.children).forEach(element => {
+        if (element.tagName === "P") {
+          photoID = element.textContent.trim();
+        }
+      });
       large_image_box.appendChild(image_var)
-        
       main_body.appendChild(large_image_box)
-        
       
-
+      var photoData = await wrapper.GetPhotoData(photoID)
       
-
-        large_image_box.appendChild(image_var)
-        large_image_box.appendChild(text_container)
-        main_body.appendChild(large_image_box)
-
+      var user = document.createElement("p");
+      var desc = document.createElement("p")
+      console.log(photoData)
+      user.innerHTML = "photographer: " + photoData["user"]["first_name"]
+      desc.innerHTML = photoData["description"]
+      
+      text_container.appendChild(user)
+      text_container.appendChild(desc)
+      
+      image_var.src = photoData["urls"]["regular"]
+      if (document.querySelector(".large_box") != null) {
+        main_body.removeChild(document.querySelector(".large_box"))
+      }
+      large_image_box.appendChild(image_var)
+      
+      main_body.appendChild(large_image_box)
+      
+      
+      large_image_box.appendChild(text_container)
+      
     }
-    
-    
-
   }
 )
 
