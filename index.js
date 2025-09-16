@@ -1,5 +1,6 @@
 
-const searchInput = document.querySelector('#search_top');
+const imageBox = document.querySelector(".image_box");
+
 
 var wrapper = new ApiWrapper()
 
@@ -14,29 +15,41 @@ searchInput.addEventListener('keydown', function(event) {
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
 
+
 var main = document.getElementById("main")
 
 
 
+
 var image_box_list = document.getElementsByClassName("image_box")[0]
-var p = document.createElement("p4")
-
-p.innerText = "Country of origin:"
 
 
-
-
-search_input.addEventListener("keydown", (event) => {
+search_input.addEventListener("keydown", async (event) => {
   if (event.key === 'Enter') {
+
+    imageBox.replaceChildren();
+
     var search_query = event.target.value
 
     const query = document.querySelector("#search_top").value;
-    fetch(`Api/searchImages.php?query=${encodeURIComponent(query)}&pageNum=1&perPage=30`)
+
+    var photos = await wrapper.SearchImages(search_query, 1, 30, "relevant")
+    
+    photos["results"].forEach(element => {
+      
+      var img = document.createElement("img")
+      var div = document.createElement("div")
+      var photoIDCon = document.createElement("p")
+      photoIDCon.style.display = "none"
+      photoIDCon.id = "photoID"
 
 
+      photoIDCon.innerHTML = element["id"]
 
+      img.src = element["urls"]["thumb"]
 
-    var data = wrapper.SearchImages(search_query, 1, 30, "relevant")
+      div.appendChild(img)
+      div.appendChild(photoIDCon)
 
 
     console.log(data)
@@ -58,20 +71,30 @@ search_input.addEventListener("keydown", (event) => {
     */
 })
 
+      imageBox.appendChild(div)
+    });
+  }
+})
 
-image_box_list.addEventListener('click', (event) => {
-    console.log(event.target.tagName)
+
+
+
+document.body.addEventListener('click', async (event) => {
+  
+  if (event.target.tagName == "IMG" && document.querySelector(".large_box") === null) {
+    //Creates the popup box
     var large_image_box = document.createElement("div")
     large_image_box.classList = ("border_radius_large large_box")
-
+  
     var image_var = document.createElement("img")
-    var image = event.target.src
-   
-
+    
+    //Sets the image to the lower res tumbnail one while it waits for the api to give the higher res one
+    image_var.src = event.target.src
     var text_container = document.createElement("div")
     text_container.classList = ("text_image_container")
-    text_container.appendChild(p)
-    
+    var image = event.target
+    let photoID = null;
+
 
 
     image_var.src = image
@@ -79,27 +102,44 @@ image_box_list.addEventListener('click', (event) => {
         main_body.removeChild(document.querySelector(".large_box"))
         console.log("Removed large box")
     }
+
+    //Gets the photo id from the p tag in the image div
+    Array.from(image.parentElement.children).forEach(element => {
+      if (element.tagName === "P") {
+        photoID = element.textContent.trim();
+      }
+    });
+    large_image_box.appendChild(image_var)
+    main_body.appendChild(large_image_box)
     
-    if (event.target.tagName == "IMG") {
-
-      large_image_box.appendChild(image_var)
-        
-      main_body.appendChild(large_image_box)
-        
-      
-
-      
-
-        large_image_box.appendChild(image_var)
-        large_image_box.appendChild(text_container)
-        main_body.appendChild(large_image_box)
-
+    var photoData = await wrapper.GetPhotoData(photoID)
+    
+    var user = document.createElement("p");
+    var desc = document.createElement("p")
+    console.log(photoData)
+    user.innerHTML = "photographer: " + photoData["user"]["first_name"]
+    desc.innerHTML = photoData["description"]
+    
+    text_container.appendChild(user)
+    text_container.appendChild(desc)
+    
+    image_var.src = photoData["urls"]["regular"]
+    if (document.querySelector(".large_box") != null) {
+      main_body.removeChild(document.querySelector(".large_box"))
     }
+    large_image_box.appendChild(image_var)
+    
+    main_body.appendChild(large_image_box)
     
     
+    large_image_box.appendChild(text_container)
+    }
+    else if (event.target.tagName === "IMG"){
+      console.log("image clicked")
 
-  }
-)
+      //main_body.removeChild(document.querySelector(".large_box"))
+    }
+  })
 
 
 

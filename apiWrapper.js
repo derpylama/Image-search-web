@@ -6,13 +6,13 @@ class ApiWrapper {
 
     SearchImages(query, pageNum = 1, perPage = 30, orderBy = "relevant", orientation) {
         if(orientation != null){
-            var apiUrl = "Api/searchImages.php?query=" + query + "&pageNum=" + pageNum + "&perPage=" + perPage + "&orderBy=" + orderBy + "&orientation=" + orientation
+            var apiUrl = "api/searchimages.php?query=" + query + "&pageNum=" + pageNum + "&perPage=" + perPage + "&orderBy=" + orderBy + "&orientation=" + orientation
         }
         else{
-            var apiUrl = "Api/searchImages.php?query=" + query + "&pageNum=" + pageNum + "&perPage=" + perPage + "&orderBy=" + orderBy
+            var apiUrl = "api/searchImages.php?query=" + query + "&pageNum=" + pageNum + "&perPage=" + perPage + "&orderBy=" + orderBy
         }
 
-        fetch(apiUrl)
+        return fetch(apiUrl)
             .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -20,7 +20,6 @@ class ApiWrapper {
             return response.json(); // Parse JSON response
             })
             .then(data => {
-            console.log(data);
             return data
             })
             .catch(error => {
@@ -29,7 +28,7 @@ class ApiWrapper {
     }    
     
     GetRandomImages(count = 30, query, orientation) {
-        var apiUrl = "Api/getRandomImages.php?count=" + count
+        var apiUrl = "api/getrandomimages.php?count=" + count
         
         if(query != null){
             apiUrl + "&query=" + query
@@ -39,7 +38,7 @@ class ApiWrapper {
             apiUrl + "&orientation=" + orientation
         }
 
-        fetch(apiUrl)
+        return fetch(apiUrl)
             .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -47,7 +46,7 @@ class ApiWrapper {
             return response.json(); // Parse JSON response
             })
             .then(data => {
-            console.log(data);
+            
             return data
             })
             .catch(error => {
@@ -56,7 +55,7 @@ class ApiWrapper {
     }
 
     GetPhotoData(photoID){
-        fetch("Api/getPhotoData.php?photoID=" + photoID)
+        return fetch("api/getphotodata.php?photoID=" + photoID)
             .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -64,7 +63,7 @@ class ApiWrapper {
             return response.json(); // Parse JSON response
             })
             .then(data => {
-            console.log(data);
+            
             return data
             })
             .catch(error => {

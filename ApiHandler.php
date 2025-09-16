@@ -62,14 +62,30 @@
             return $data;
         }
 
-        public function SearchPhoto(int $pageNum = 1, string $searchQuery, int $perPage = 30, string $orderBy = "", string $orientation = ""): array{
-            if($orientation != ""){
-                $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage . "&order_by=" . $orderBy . "&orientation=" . $orientation;
+        public function SearchPhoto(int $pageNum = 1, string $searchQuery, int $perPage = 30, string $orderBy = "", string $orientation = ""){
+            /*if($orientation != ""){
+                $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . urlencode($searchQuery) . "&per_page=" . $perPage . "&order_by=" . $orderBy . "&orientation=" . $orientation;
             }
             else{
                 $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage . "&order_by=" . $orderBy;   
+            }*/
+
+            $queryParams = [
+                'page' => $pageNum,
+                'query' => $searchQuery, // spaces will be properly encoded
+                'per_page' => $perPage,
+            ];
+
+            if (!empty($orderBy)) {
+                $queryParams['order_by'] = $orderBy;
+            }
+        
+            if (!empty($orientation)) {
+                $queryParams['orientation'] = $orientation;
             }
             
+            $photoSearchEndpoint = self::BASEAPIURL . '/search/photos?' . http_build_query($queryParams);
+
             $accessKey = $_ENV["access_key"];
 
             if(!$accessKey){
@@ -86,9 +102,9 @@
             $response = curl_exec($curl);
             curl_close($curl);
 
-            $data = json_decode($response, true);
+            
 
-            return $data;
+            return $response;
         }
         
         public function GetPhotoData(string $photoID): array{
