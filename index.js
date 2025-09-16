@@ -52,42 +52,52 @@ search_input.addEventListener("keydown", async (event) => {
 
 
 image_box_list.addEventListener('click', async (event) => {
-    var large_image_box = document.createElement("div")
-    large_image_box.classList = ("border_radius_large large_box")
-
-    var image_var = document.createElement("img")
+  
+  if (event.target.tagName == "IMG") {
+      //Creates the popup box
+      var large_image_box = document.createElement("div")
+      large_image_box.classList = ("border_radius_large large_box")
     
-   
-    var text_container = document.createElement("div")
-    text_container.classList = ("text_image_container")
-    
-    
-    if (event.target.tagName == "IMG") {
+      var image_var = document.createElement("img")
+      
+      //Sets the image to the lower res tumbnail one while it waits for the api to give the higher res one
+      image_var.src = event.target.src
+      var text_container = document.createElement("div")
+      text_container.classList = ("text_image_container")
       var image = event.target
       let photoID = null;
+
+      //Gets the photo id from the p tag in the image div
       Array.from(image.parentElement.children).forEach(element => {
         if (element.tagName === "P") {
-          photoID = element.textContent.trim(); // safer than innerHTML
+          photoID = element.textContent.trim();
         }
       });
-    
-      console.log(photoID)
+      large_image_box.appendChild(image_var)
+      main_body.appendChild(large_image_box)
+      
       var photoData = await wrapper.GetPhotoData(photoID)
+      
+      var user = document.createElement("p");
+      var desc = document.createElement("p")
       console.log(photoData)
-  
+      user.innerHTML = "photographer: " + photoData["user"]["first_name"]
+      desc.innerHTML = photoData["description"]
+      
+      text_container.appendChild(user)
+      text_container.appendChild(desc)
+      
       image_var.src = photoData["urls"]["regular"]
       if (document.querySelector(".large_box") != null) {
-          main_body.removeChild(document.querySelector(".large_box"))
+        main_body.removeChild(document.querySelector(".large_box"))
       }
       large_image_box.appendChild(image_var)
-        
-      main_body.appendChild(large_image_box)
-        
       
-      large_image_box.appendChild(image_var)
-      large_image_box.appendChild(text_container)
       main_body.appendChild(large_image_box)
-
+      
+      
+      large_image_box.appendChild(text_container)
+      
     }
   }
 )

@@ -19,7 +19,7 @@ try{
         $perPage = (int)$_GET["perPage"];
 
         $data = $handler->SearchPhoto($pageNum, $query, $perPage, $_GET["orderBy"]);
-        echo json_encode($data);
+        echo $data;
     }
     else
     {
