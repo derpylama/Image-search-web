@@ -119,8 +119,6 @@ document.body.addEventListener('click', async (event) => {
     }
     else if (event.target.tagName === "IMG"){
       console.log("image clicked")
-
-      //main_body.removeChild(document.querySelector(".large_box"))
     }
   })
 
@@ -137,6 +135,14 @@ main.addEventListener('click', (event) => {
 }
 
 )
+function clickOutside(element) {
+  document.body.addEventListener("click", event => {
+    if (!element.contains(event.target)){
+      
+    }
+  })
+}
+
 
 /*
 class dropMenu {
