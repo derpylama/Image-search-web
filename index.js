@@ -51,6 +51,7 @@ search_input.addEventListener("keydown", async (event) => {
 
 
 
+
 image_box_list.addEventListener('click', async (event) => {
   
   if (event.target.tagName == "IMG") {
@@ -101,3 +102,59 @@ image_box_list.addEventListener('click', async (event) => {
     }
   }
 )
+
+/*
+class dropMenu {
+  constructor() {
+
+  }
+
+
+}
+
+
+
+
+
+
+const dropdown = document.querySelector(".dropdown_menu")
+
+
+
+
+function clicked_dropdown() {
+  console.log(dropdown.classList)
+  if (dropdown.classList.contains("display_container")) {
+    console.log("Removed")
+    dropdown.classList.remove("display_container")
+
+  }
+  else {
+    dropdown.classList += (" display_container")
+    console.log("Added class")
+  }
+  console.log(dropdown.classList)
+
+}
+
+function clickedDropdown(menuId) {
+  var dropdownMenu = getElementById(menuId)
+
+}
+
+
+*/
+
+/*
+window.onclick = function(event) {
+  if (!event.target.matches("select_button_dropdown")) {
+    dropdown_elements = document.getElementsByClassName("dropdown_menu")
+    var i
+    for (i = 0; i <dropdown_elements.length; i++) {
+      if (dropdown_elements[i].classList.contains("display_container")) {
+        dropdown_elements[i].classList.remove("display_container")
+      }
+    }
+  }
+}
+*/
