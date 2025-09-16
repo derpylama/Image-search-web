@@ -85,31 +85,58 @@ document.body.addEventListener('click', async (event) => {
     //Gets the photo id from the p tag in the image div
     Array.from(image.parentElement.children).forEach(element => {
       if (element.tagName === "P") {
-        photoID = element.textContent.trim();
+        photoID = element.textContent.trim()
       }
     });
+
     large_image_box.appendChild(image_var)
     main_body.appendChild(large_image_box)
     
     var photoData = await wrapper.GetPhotoData(photoID)
     
-    var user = document.createElement("p");
-    var desc = document.createElement("p")
     console.log(photoData)
+    
+    //Display photo information
+    var user = document.createElement("p")
+    var desc = document.createElement("p")
+
     user.innerHTML = "photographer: " + photoData["user"]["first_name"]
     desc.innerHTML = photoData["description"]
     
     text_container.appendChild(user)
     text_container.appendChild(desc)
+
+    if(photoData["location"]["city"] != null){
+      var city = document.createElement("p")
+      var country = document.createElement("p")
+      
+      city.innerHTML = photoData["location"]["city"]
+      country.innerHTML = photoData["location"]["country"]
+
+      text_container.appendChild(city)
+      text_container.appendChild(country)
+    }
+    
+    if(photoData["location"]["position"]["latitude"] != null){
+      var longitude = document.createElement("p")
+      var latitude = document.createElement("p")
+
+      longitude.innerHTML = photoData["location"]["position"]["latitude"]
+      latitude.innerHTML = photoData["location"]["position"]["longitude"]
+      
+      text_container.appendChild(longitude)
+      text_container.appendChild(latitude)
+    }
     
     image_var.src = photoData["urls"]["regular"]
+    image_var.alt = photoData["alt_description"]
+
     if (document.querySelector(".large_box") != null) {
       main_body.removeChild(document.querySelector(".large_box"))
     }
     large_image_box.appendChild(image_var)
     
     main_body.appendChild(large_image_box)
-    
     
     large_image_box.appendChild(text_container)
     }
