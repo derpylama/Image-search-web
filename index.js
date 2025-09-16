@@ -14,6 +14,13 @@ searchInput.addEventListener('keydown', function(event) {
 
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
+
+
+var main = document.getElementById("main")
+
+
+
+
 var image_box_list = document.getElementsByClassName("image_box")[0]
 
 
@@ -44,6 +51,26 @@ search_input.addEventListener("keydown", async (event) => {
       div.appendChild(img)
       div.appendChild(photoIDCon)
 
+
+    console.log(data)
+  }
+    /*
+    fetch('Api/searchImages.php?query=cat&pageNum=1&perPage=30')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse JSON response
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+    */
+})
+
       imageBox.appendChild(div)
     });
   }
@@ -67,6 +94,14 @@ document.body.addEventListener('click', async (event) => {
     text_container.classList = ("text_image_container")
     var image = event.target
     let photoID = null;
+
+
+
+    image_var.src = image
+    if (document.getElementsByClassName("large_box")[0] != null) {
+        main_body.removeChild(document.querySelector(".large_box"))
+        console.log("Removed large box")
+    }
 
     //Gets the photo id from the p tag in the image div
     Array.from(image.parentElement.children).forEach(element => {
@@ -105,6 +140,27 @@ document.body.addEventListener('click', async (event) => {
       //main_body.removeChild(document.querySelector(".large_box"))
     }
   })
+
+
+
+main.addEventListener('click', (event) => {
+  imageElement = document.querySelector(".large_box")
+  if (!imageElement == null) {
+    console.log(event, "TEST")
+  }
+  console.log("Text")
+  
+
+}
+
+)
+function clickOutside(element) {
+  document.body.addEventListener("click", event => {
+    if (!element.contains(event.target))
+
+  })
+}
+
 
 /*
 class dropMenu {
@@ -160,4 +216,5 @@ window.onclick = function(event) {
     }
   }
 }
+
 */
