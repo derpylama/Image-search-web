@@ -114,7 +114,12 @@ main.addEventListener('click', (event) => {
 }
 
 )
+function clickOutside(element) {
+  document.body.addEventListener("click", event => {
+    if (!element.contains(event.target))
 
+  })
+}
 
 
 /*
