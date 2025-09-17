@@ -7,8 +7,6 @@ html {
     font-size: 100%;
 }
 
-
-
 p1 {
     font-size: 40px;
 }
@@ -20,8 +18,6 @@ p4 {
 .side_margin {
     margin: 0 50px;
 }
-
-
 
 /*Containers*/
 #main {
@@ -41,18 +37,14 @@ p4 {
     width: 100%;
     margin-bottom: 10px;
     height: auto;
-    
-
-  
-    
-
-
-
 
 }
 .main_container {
     height: auto;
     padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /*Topbar*/
@@ -84,17 +76,7 @@ p4 {
 
     background-color: rgb(140, 86, 86);
     
-    
-
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -162,6 +144,8 @@ select {
     justify-content: center;
     top: 10vh;
     z-index: 100;
+    box-shadow: 0 0 0 max(100vw, 100vh) rgba(0, 0, 0, 0.3);
+    
 }
 .text_image_container {
     width: 80%;
@@ -197,9 +181,6 @@ select {
     .top_button_container {
         flex: 0;
         order: 2;
-
-        
-    
     }
 
     .main_container {
@@ -230,15 +211,12 @@ select {
         width: auto;
         margin: auto;
         max-width: 1000px;
-
     }
     .topbar{
         padding: 12px 0;
         height: 10vh;
         width: 500px;
     }
-
-    
 }
 
 @media screen and ( min-width:1200px) and (max-width:2400px){
@@ -249,15 +227,10 @@ select {
     #topbar{
         padding: 18px 0;
         height: 10vh;
-
     }
-    
     * {
         font-size: 28px;
     }
-    
-
-    
 }
 
 @media screen and ( min-width:2400px){
@@ -285,15 +258,8 @@ html, body {
 
 
 .border_radius_large {
-    border-radius: 10vh;
+    border-radius: 6vh;
 }
-
-
-
-
-
-
-
 
 
 img {

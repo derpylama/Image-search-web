@@ -21,17 +21,14 @@
 </head>
 <body>
     <div>
-
         <div id="main">
             <div class="main_container">
-
-
                 <div id="topbar"> 
-                    <div class="top_button_container">
-                        
-                    </div>
+                    <!--Used for filling the left side of the topbar-->
+                    <div class="top_button_container"></div>
+                    <!--Topbar search bar-->
                     <input id="search_top" name="q" type="search" placeholder="Sök" />
-
+                    <!--The right side topbar container used for sort dropdown buttons-->
                     <div class="top_button_container">
                         <select name="sort" id="select_sort">
                             <option value="relevant">Relevant</option>
@@ -48,14 +45,11 @@
 
 
                 </div>
+                <!--Search result image container -->
                 <div class="image_box">
-
                 </div>
             </div>
-            
-
         </div>
-
     </div>
 </body>
 </html>
