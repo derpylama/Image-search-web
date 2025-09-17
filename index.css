@@ -135,7 +135,6 @@ select {
     top: 10vh;
     z-index: 100;
     box-shadow: 0 0 0 max(100vw, 100vh) rgba(0, 0, 0, 0.3);
-    
 }
 .text_image_container {
     max-width: 80%;
@@ -193,9 +192,7 @@ select {
         padding: 10px 0;
         flex-wrap: wrap;
         justify-content: flex-start;
-    
-        
-        
+     
     }
     #search_top {
         width: 100%;
@@ -297,6 +294,21 @@ img {
     
 }
 
+
+.tag_con{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag_item{
+    background-color: white;
+    padding: 3px;
+    width: auto;
+    border-radius: 3px;
+}
+
+
 .centered_text {
     flex: 1 1 auto;
     text-align: center;
@@ -305,3 +317,4 @@ img {
     margin-bottom: 10vh;
 
 }
+
