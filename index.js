@@ -14,13 +14,6 @@ searchInput.addEventListener('keydown', function(event) {
 
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
-
-
-var main = document.getElementById("main")
-
-
-
-
 var image_box_list = document.getElementsByClassName("image_box")[0]
 
 
@@ -51,18 +44,17 @@ search_input.addEventListener("keydown", async (event) => {
       div.appendChild(img)
       div.appendChild(photoIDCon)
 
-
-    console.log(data)
-    })
-
       imageBox.appendChild(div)
-    };
-  })
+    });
+  }
+})
 
 
 
 
 document.body.addEventListener('click', async (event) => {
+
+
   
   if (event.target.tagName == "IMG" && document.querySelector(".large_box") === null) {
     //Creates the popup box
@@ -77,14 +69,6 @@ document.body.addEventListener('click', async (event) => {
     text_container.classList = ("text_image_container")
     var image = event.target
     let photoID = null;
-
-
-
-    image_var.src = image
-    if (document.getElementsByClassName("large_box")[0] != null) {
-        main_body.removeChild(document.querySelector(".large_box"))
-        console.log("Removed large box")
-    }
 
     //Gets the photo id from the p tag in the image div
     Array.from(image.parentElement.children).forEach(element => {
@@ -111,32 +95,39 @@ document.body.addEventListener('click', async (event) => {
       main_body.removeChild(document.querySelector(".large_box"))
     }
     large_image_box.appendChild(image_var)
+    large_image_box.appendChild(text_container)
     
     main_body.appendChild(large_image_box)
     
     
-    large_image_box.appendChild(text_container)
+    
     }
     else if (event.target.tagName === "IMG"){
       console.log("image clicked")
 
       //main_body.removeChild(document.querySelector(".large_box"))
     }
-  })
+})
 
 
-
-main.addEventListener('click', (event) => {
-  imageElement = document.querySelector(".large_box")
-  if (!imageElement == null) {
-    console.log(event, "TEST")
+function clickedOutside(element,event) {
+  console.log(event.target,"TEXT",element)
+  if (!element.includes(event.target)) {
+    return true
   }
-  console.log("Text")
-  
-
 }
 
-)
+
+
+document.body.addEventListener('click', async (event) => {
+  if (!clickedOutside(".image_box > div",event)) {
+    console.log("Pressed image")
+
+  }
+
+
+})
+
 
 /*
 class dropMenu {
@@ -192,5 +183,4 @@ window.onclick = function(event) {
     }
   }
 }
-
 */
