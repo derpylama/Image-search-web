@@ -4,8 +4,8 @@ class ApiWrapper {
 
     }
 
-    SearchImages(query, pageNum = 1, perPage = 30, orderBy = "relevant", orientation) {
-        if(orientation != null){
+    SearchImages(query, pageNum = 1, perPage = 30, orderBy = "relevant", orientation = "") {
+        if(orientation != ""){
             var apiUrl = "api/searchimages.php?query=" + query + "&pageNum=" + pageNum + "&perPage=" + perPage + "&orderBy=" + orderBy + "&orientation=" + orientation
         }
         else{

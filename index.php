@@ -38,7 +38,7 @@
                             <option value="all">&#9675All</option>
                             <option value="landscape">&#9645Landscape</option>
                             <option value="portrait">&#9647Portrait</option>
-                            <option value="squareish">&#9635Squareish</option>
+                            <option value="squarish">&#9635Squareish</option>
                         </select>
                     </div>
 
