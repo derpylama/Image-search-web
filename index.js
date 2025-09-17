@@ -44,6 +44,7 @@ search_input.addEventListener("keydown", async (event) => {
       div.appendChild(img)
       div.appendChild(photoIDCon)
 
+
       imageBox.appendChild(div)
     });
   }
@@ -104,8 +105,6 @@ document.body.addEventListener('click', async (event) => {
     }
     else if (event.target.tagName === "IMG"){
       console.log("image clicked")
-
-      //main_body.removeChild(document.querySelector(".large_box"))
     }
 })
 
@@ -126,7 +125,18 @@ document.body.addEventListener('click', async (event) => {
   }
 
 
+
 })
+
+)
+function clickOutside(element) {
+  document.body.addEventListener("click", event => {
+    if (!element.contains(event.target)){
+
+    }
+  })
+}
+
 
 
 /*
