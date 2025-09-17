@@ -66,19 +66,7 @@ p4 {
 .top_button_container {
     flex: 1;
     display: flex;
-    
-
 }
-.dropdown_button {
-    justify-self: right;
-    width: 4em;
-    height: 2em;
-
-    background-color: rgb(140, 86, 86);
-    
-}
-
-
 
 select {
     outline: none;
@@ -87,14 +75,9 @@ select {
     height: 60px;
 }
 
-.custom_select {
-    cursor: pointer;
-    width: 40px;
-}
-
 
 /*Container for image and image design*/
-.image_box {
+.image_container {
 
     width: 100%;
     height: auto;
@@ -105,7 +88,7 @@ select {
     flex-direction: row;
     gap: 10px 20px;
 }
-.image_box > div {
+.image_container > div {
 
     width: auto;
     height: 20vh;
@@ -121,7 +104,7 @@ select {
 
 
 }
-.image_box > div:hover {
+.image_container > div:hover {
     background-color: black;
     transform: scale(1.05);
 }
