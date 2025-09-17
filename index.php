@@ -1,12 +1,3 @@
-    <?php
-    require "ApiHandler.php";
-    
-    $apiHandler = new RequestHandler();
-    
-    $apiHandler->loadEnv();
-
-    
-    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +39,10 @@
                 <!--Search result image container -->
                 <div class="image_container">
                 </div>
+                <div class="centered_text">
+                    <p2>Sök efter vad för bilder som du vill se. </p2>
+                </div>
+
             </div>
         </div>
     </div>
