@@ -31,10 +31,16 @@ search_input.addEventListener("keydown", async (event) => {
 
     var search_query = event.target.value
 
-    const query = document.querySelector("#search_top").value;
+    var orderBy = document.getElementById("select_sort").value
+    var orientation = document.getElementById("frame_sort").value
 
-    var photos = await wrapper.SearchImages(search_query, 1, 30, "relevant")
-    
+    if(orientation === "all"){
+      var photos = await wrapper.SearchImages(search_query, 1, 30, orderBy)
+    }
+    else{
+      var photos = await wrapper.SearchImages(search_query, 1, 30, orderBy, orientation)
+    }
+
     photos["results"].forEach(element => {
       
       var img = document.createElement("img")
@@ -43,10 +49,9 @@ search_input.addEventListener("keydown", async (event) => {
       photoIDCon.style.display = "none"
       photoIDCon.id = "photoID"
 
-
       photoIDCon.innerHTML = element["id"]
 
-      img.src = element["urls"]["thumb"]
+      img.src = element["urls"]["small"]
 
       div.appendChild(img)
       div.appendChild(photoIDCon)
@@ -74,9 +79,7 @@ document.body.addEventListener('click', async (event) => {
     var image = event.target
     let photoID = null;
 
-
-
-    image_var.src = image
+    image_var.src = image.src
     if (document.getElementsByClassName("large_box")[0] != null) {
         main_body.removeChild(document.querySelector(".large_box"))
         console.log("Removed large box")
@@ -110,8 +113,8 @@ document.body.addEventListener('click', async (event) => {
       var city = document.createElement("p")
       var country = document.createElement("p")
       
-      city.innerHTML = photoData["location"]["city"]
-      country.innerHTML = photoData["location"]["country"]
+      city.innerHTML = "City: " + photoData["location"]["city"]
+      country.innerHTML = "country: " + photoData["location"]["country"]
 
       text_container.appendChild(city)
       text_container.appendChild(country)
