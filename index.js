@@ -118,17 +118,47 @@ document.body.addEventListener('click', async (event) => {
       text_container.appendChild(country)
     }
     
+    //Check if latitude exists and if so create a element with the information
     if(photoData["location"]["position"]["latitude"] != null){
-      var longitude = document.createElement("p")
-      var latitude = document.createElement("p")
+      var longitudeP = document.createElement("p")
+      var latitudeP = document.createElement("p")
 
-      longitude.innerHTML = photoData["location"]["position"]["latitude"]
-      latitude.innerHTML = photoData["location"]["position"]["longitude"]
+      latitude = photoData["location"]["position"]["latitude"]
+      longitude = photoData["location"]["position"]["longitude"]
+
+      longitude.innerHTML = latitude
+      latitude.innerHTML = longitude
       
-      text_container.appendChild(longitude)
-      text_container.appendChild(latitude)
+      text_container.appendChild(longitudeP)
+      text_container.appendChild(latitudeP)
+
+      var mapIframe = document.createElement("iframe")
+      mapIframe.src =
+      "https://www.openstreetmap.org/export/embed.html?" +
+      "bbox=" +
+      (longitude - 0.005) + "," +  // left (min lon)
+      (latitude - 0.005) + "," +   // bottom (min lat)
+      (longitude + 0.005) + "," +  // right (max lon)
+      (latitude + 0.005) +         // top (max lat)
+      "&layer=mapnik" +
+      "&marker=" + latitude + "," + longitude;
+      text_container.appendChild(mapIframe)
+
     }
     
+    var tagCon = document.createElement("div")
+    tagCon.classList.add("tag_con")
+
+    photoData["tags"].forEach((element) =>{
+      var tag = document.createElement("p")
+      tag.innerHTML = element["title"]
+      tag.classList.add("tag_item")
+
+      tagCon.appendChild(tag)
+    })
+
+    
+
     image_var.src = photoData["urls"]["regular"]
     image_var.alt = photoData["alt_description"]
 
@@ -137,6 +167,7 @@ document.body.addEventListener('click', async (event) => {
     }
     large_image_box.appendChild(image_var)
     large_image_box.appendChild(text_container)
+    large_image_box.appendChild(tagCon)
     
     main_body.appendChild(large_image_box)
     
@@ -168,7 +199,6 @@ document.body.addEventListener('click', async (event) => {
 
 })
 
-
 function clickOutside(element) {
   document.body.addEventListener("click", event => {
     if (!element.contains(event.target)){
@@ -176,61 +206,3 @@ function clickOutside(element) {
     }
   })
 }
-
-
-
-/*
-class dropMenu {
-  constructor() {
-
-  }
-
-
-}
-
-
-
-
-
-
-const dropdown = document.querySelector(".dropdown_menu")
-
-
-
-
-function clicked_dropdown() {
-  console.log(dropdown.classList)
-  if (dropdown.classList.contains("display_container")) {
-    console.log("Removed")
-    dropdown.classList.remove("display_container")
-
-  }
-  else {
-    dropdown.classList += (" display_container")
-    console.log("Added class")
-  }
-  console.log(dropdown.classList)
-
-}
-
-function clickedDropdown(menuId) {
-  var dropdownMenu = getElementById(menuId)
-
-}
-
-
-*/
-
-/*
-window.onclick = function(event) {
-  if (!event.target.matches("select_button_dropdown")) {
-    dropdown_elements = document.getElementsByClassName("dropdown_menu")
-    var i
-    for (i = 0; i <dropdown_elements.length; i++) {
-      if (dropdown_elements[i].classList.contains("display_container")) {
-        dropdown_elements[i].classList.remove("display_container")
-      }
-    }
-  }
-}
-*/
