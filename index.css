@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -10,8 +11,12 @@ html {
 p1 {
     font-size: 40px;
 }
+p2 {
+    font-size: 2.1em;
+}
+
 p4 {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
     font-size: 2em;
 }
 
@@ -23,9 +28,10 @@ p4 {
 #main {
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(96, 161, 96);
+
 }
 #topbar {
+    flex: 0 1 auto;
     display: flex;
 
     box-sizing: content-box;
@@ -40,6 +46,7 @@ p4 {
 
 }
 .main_container {
+    min-height: 100vh;
     height: auto;
     padding: 0 10px;
     display: flex;
@@ -114,7 +121,7 @@ select {
 .large_box {
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
 
     padding: 0 4vw;
 
@@ -131,18 +138,53 @@ select {
     
 }
 .text_image_container {
-    width: 80%;
+    max-width: 80%;
     height: 8rem;
     margin: 10px auto;
     background-color: brown;
+    
 
 }
 .large_box > img {
     display: block;
-    max-height: 60%;
+
 
     object-fit: contain;
 }
+
+.popup_image_container_vertical {
+    flex-direction: row;
+    max-height: 94%;
+    width: auto;
+    align-items: center;
+    
+}
+.popup_image_container_vertical > img {
+    
+    max-height: 94%;
+
+    
+}
+
+.popup_image_container_horizontal {
+    flex-direction: column;
+    width: auto;
+    align-items: center;
+    
+}
+
+.popup_image_container_horizontal > img{
+    max-height: 64%;
+    
+}
+
+.photo_info_container {
+    display: flex;
+    height: auto;
+    width: auto;
+    flex-flow: row;
+}
+
 
 
 
@@ -239,7 +281,6 @@ html, body {
     width: 100%;
 }
 
-
 .border_radius_large {
     border-radius: 6vh;
 }
@@ -256,3 +297,11 @@ img {
     
 }
 
+.centered_text {
+    flex: 1 1 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10vh;
+
+}

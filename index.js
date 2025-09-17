@@ -65,7 +65,15 @@ document.body.addEventListener('click', async (event) => {
   if (event.target.tagName == "IMG" && document.querySelector(".large_box") === null) {
     //Creates the popup box
     var large_image_box = document.createElement("div")
-    large_image_box.classList = ("border_radius_large large_box")
+    if (event.target.width < event.target.height) {
+      console.log("Vertical")
+      large_image_box.classList.add("border_radius_large", "large_box", "popup_image_container_vertical")
+    }
+    else {
+      console.log("horizontal")
+      large_image_box.classList.add("border_radius_large", "large_box", "popup_image_container_horizontal")
+    }
+    
   
     var image_var = document.createElement("img")
     
@@ -136,11 +144,24 @@ document.body.addEventListener('click', async (event) => {
       main_body.removeChild(document.querySelector(".large_box"))
     }
     large_image_box.appendChild(image_var)
-    large_image_box.appendChild(text_container)
+
+
+
+
+    image_info_container = document.createElement("div")
+    image_info_container.classList = ("photo_info_container")
+    image_info_container.appendChild(text_container)
+
+
+    large_image_box.appendChild(image_info_container)
     
+
+
+
+
     main_body.appendChild(large_image_box)
     
-    large_image_box.appendChild(text_container)
+    
 
     }
     else if (event.target.tagName === "IMG"){
