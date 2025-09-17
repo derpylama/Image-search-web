@@ -1,5 +1,5 @@
 
-const imageBox = document.querySelector(".image_box");
+const imageBox = document.querySelector(".image_container");
 
 
 var wrapper = new ApiWrapper()
@@ -14,7 +14,7 @@ searchInput.addEventListener('keydown', function(event) {
 
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
-var image_box_list = document.getElementsByClassName("image_box")[0]
+var image_box_list = document.getElementsByClassName("image_container")[0]
 
 
 search_input.addEventListener("keydown", async (event) => {
@@ -159,7 +159,7 @@ function clickedOutside(element,event) {
 
 
 document.body.addEventListener('click', async (event) => {
-  if (!clickedOutside(".image_box > div",event)) {
+  if (!clickedOutside(".image_container > div",event)) {
     console.log("Pressed image")
 
   }
@@ -168,7 +168,7 @@ document.body.addEventListener('click', async (event) => {
 
 })
 
-)
+
 function clickOutside(element) {
   document.body.addEventListener("click", event => {
     if (!element.contains(event.target)){

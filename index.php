@@ -46,7 +46,7 @@
 
                 </div>
                 <!--Search result image container -->
-                <div class="image_box">
+                <div class="image_container">
                 </div>
             </div>
         </div>
