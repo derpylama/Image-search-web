@@ -5,16 +5,7 @@ var orientationSort;
 var orderBy;
 var searchQuery;
 
-
 var wrapper = new ApiWrapper()
-
-/*
-searchInput.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        const searchValue = searchInput.value;
-        console.log('Sökterm:', searchValue);
-    }
-});*/
 
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
@@ -37,6 +28,8 @@ search_input.addEventListener("keydown", async (event) => {
     else{
       var photos = await wrapper.SearchImages(searchQuery, 1, 30, orderBy, orientationSort)
     }
+
+    main_body.removeChild(document.querySelector(".centered_text"));
 
     currentPage = 1;
 
