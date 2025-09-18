@@ -42,7 +42,7 @@
                 <div class="centered_text">
                     <p2>Sök efter vad för bilder som du vill se. </p2>
                 </div>
-
+                <button id="load_more_btn">Load more</button>
             </div>
         </div>
     </div>
