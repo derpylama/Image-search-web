@@ -55,8 +55,6 @@ search_input.addEventListener("keydown", async (event) => {
 })
 
 
-
-
 document.body.addEventListener('click', async (event) => {
   if (event.target.tagName == "IMG" && document.querySelector(".large_box") === null) {
     //Creates the popup box
