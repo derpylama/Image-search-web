@@ -119,36 +119,46 @@ select {
 
 /*Popup container*/
 .large_box {
+
+    min-height: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction:column;
 
-    padding: 0 4vw;
+    padding: 2vw 4vw;
 
     max-width: 80%;
     min-height: 20vh;
-    height: 80vh;
+    max-height: 82vh;
     background-color: rgb(80, 118, 80);
     position: fixed;
     justify-self: center;
-    justify-content: center;
-    top: 10vh;
+
+
     z-index: 100;
     box-shadow: 0 0 0 max(100vw, 100vh) rgba(0, 0, 0, 0.3);
 }
-.text_image_container {
-    max-width: 80%;
-    height: 8rem;
-    margin: 10px auto;
-    background-color: brown;
-    
-
-}
 .large_box > img {
-    display: block;
-
-
+    
+    flex: 1;
+    min-height: 0;
     object-fit: contain;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+.text_image_container {
+    grid-area: text;
+    
+    min-width: 40%;
+
+    width: auto;
+    max-height: 8rem;
+    background-color: brown;
 }
 
 .popup_image_container_vertical {
@@ -172,18 +182,64 @@ select {
     
 }
 
-.popup_image_container_horizontal > img{
-    max-height: 64%;
+.popup_image_container_horizontal > .photo_info_container{
+    max-width: 100%;
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-areas: 
+    "map text"
+    "tag tag"
+;
+
     
 }
 
-.photo_info_container {
-    display: flex;
-    height: auto;
-    width: auto;
-    flex-flow: row;
+.popup_image_container_vertical > .photo_info_container{
+    flex-wrap: wrap;
+    
 }
 
+.popup_image_container_horizontal > img{
+    max-height: 64%;
+}
+
+.popup_image_container_vertical > .photo_info_container > .text_image_container {
+    max-width: 100%;
+    min-height: 40%;
+    max-height: 60%;
+}
+
+.popup_image_container_vertical > .photo_info_container > .tag_con {
+    max-width: 100%;
+
+}
+.popup_image_container_vertical > .photo_info_container > .map_container {
+    max-width: 100%;
+    height: auto;
+}
+
+.photo_info_container {
+    flex: 0 1 auto;
+    display: grid;
+    grid-template-areas: 
+    "map"
+    "text"
+    "tag";
+    gap: 1em;
+
+
+    width: auto;
+
+    margin: 10px auto;
+    max-width: 18em;
+    
+}
+.map_container {
+    grid-area: map;
+
+
+    height: auto;
+}
 
 
 
@@ -199,32 +255,68 @@ select {
         flex: 100%;
         height: 4rem;
     }
-
     .top_button_container {
         flex: 0;
         order: 2;
     }
-
     .main_container {
         width: auto ;
         margin: auto;
     }
-
     .side_margin {
         margin: 0 2vw;
     }
-
-
     .image_box > div {
         max-width: 100%;
     
     }
-    .large_box {
-        max-width: 95%;
-        top:14vh;
-    }
     * {
         font-size: 20px;
+    }
+
+    .large_box {
+        max-width: 95%;
+        flex-direction: column;
+    }
+
+    .photo_info_container {
+        
+        max-width: 100%;
+        height: auto;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 
+        "map text"
+        "tag tag"
+    ;
+
+
+    
+
+    }
+    .popup_image_container_vertical > .photo_info_container{
+        flex-wrap: nowrap;
+        
+    }
+    .popup_image_container_vertical > img {
+    
+        max-height: 60%;
+    
+        
+    }
+    
+
+
+
+    .large_box > img {
+        width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+    
+    .map_container {
+        width: 100%;
     }
 }
 
@@ -251,7 +343,7 @@ select {
         height: 10vh;
     }
     * {
-        font-size: 28px;
+        font-size: 20px;
     }
 }
 
@@ -268,7 +360,7 @@ select {
     }
 
     * {
-        font-size: 50px;
+        font-size: 34px;
     }
     
 }
@@ -296,16 +388,35 @@ img {
 
 
 .tag_con{
+    grid-area: tag;
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    max-height: 100%;
+
+    flex: 0 1 auto;
+    height: auto;
+    align-content: flex-start;
 }
 
 .tag_item{
+    
+    
     background-color: white;
     padding: 3px;
     width: auto;
     border-radius: 3px;
+    text-align: center;
+    height: 1.4em;
+    font-size: 0.8rem;
+
+}
+
+
+
+.map_container > iframe {
+    width: 100%;
+    height: 100%;
 }
 
 
