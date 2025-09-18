@@ -82,7 +82,6 @@ document.body.addEventListener('click', async (event) => {
     var image = event.target
     var photoID = null;
 
-
     image_var.src = image.src
     if (document.getElementsByClassName("large_box")[0] != null) {
         main_body.removeChild(document.querySelector(".large_box"))
@@ -128,6 +127,7 @@ document.body.addEventListener('click', async (event) => {
     if(photoData["location"]["position"]["latitude"] != null){
       var longitudeP = document.createElement("p")
       var latitudeP = document.createElement("p")
+      var mapMargin = 0.005
 
       latitude = photoData["location"]["position"]["latitude"]
       longitude = photoData["location"]["position"]["longitude"]
@@ -138,14 +138,16 @@ document.body.addEventListener('click', async (event) => {
       text_container.appendChild(longitudeP)
       text_container.appendChild(latitudeP)
 
+      
+
       var mapIframe = document.createElement("iframe")
       mapIframe.src =
       "https://www.openstreetmap.org/export/embed.html?" +
       "bbox=" +
-      (longitude - 0.005) + "," +  // left (min lon)
-      (latitude - 0.005) + "," +   // bottom (min lat)
-      (longitude + 0.005) + "," +  // right (max lon)
-      (latitude + 0.005) +         // top (max lat)
+      (longitude - mapMargin) + "," +  // left (min lon)
+      (latitude - mapMargin) + "," +   // bottom (min lat)
+      (longitude + mapMargin) + "," +  // right (max lon)
+      (latitude + mapMargin) +         // top (max lat)
       "&layer=mapnik" +
       "&marker=" + latitude + "," + longitude;
       text_container.appendChild(mapIframe)
@@ -162,8 +164,6 @@ document.body.addEventListener('click', async (event) => {
 
       tagCon.appendChild(tag)
     })
-
-    
 
     image_var.src = photoData["urls"]["regular"]
     image_var.alt = photoData["alt_description"]
