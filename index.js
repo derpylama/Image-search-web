@@ -62,11 +62,11 @@ document.body.addEventListener('click', async (event) => {
     large_image_box.classList.add("border_radius_large", "large_box")
 
     if (event.target.width < event.target.height) {
-      console.log("Vertical")
+
       large_image_box.classList.add("popup_image_container_vertical")
     }
     else {
-      console.log("horizontal")
+
       large_image_box.classList.add("popup_image_container_horizontal")
     }
 
@@ -82,7 +82,7 @@ document.body.addEventListener('click', async (event) => {
     image_var.src = image.src
     if (document.getElementsByClassName("large_box")[0] != null) {
         main_body.removeChild(document.querySelector(".large_box"))
-        console.log("Removed large box")
+
     }
 
     //Gets the photo id from the p tag in the image div
@@ -97,7 +97,6 @@ document.body.addEventListener('click', async (event) => {
     
     var photoData = await wrapper.GetPhotoData(photoID)
     
-    console.log(photoData)
     
     //Display photo information
     var user = document.createElement("p")
@@ -150,21 +149,11 @@ document.body.addEventListener('click', async (event) => {
     
     //Check if latitude exists and if so create a element with the information
     if(photoData["location"]["position"]["latitude"] != null){
-      var longitudeP = document.createElement("p")
-      var latitudeP = document.createElement("p")
       var mapMargin = 0.005
       
       latitude = photoData["location"]["position"]["latitude"]
       longitude = photoData["location"]["position"]["longitude"]
-      
-      longitude.innerHTML = latitude
-      latitude.innerHTML = longitude
-      
-      text_container.appendChild(longitudeP)
-      text_container.appendChild(latitudeP)
-      
-      
-      
+
       var mapIframe = document.createElement("iframe")
       mapIframe.src =
       "https://www.openstreetmap.org/export/embed.html?" +
@@ -190,21 +179,17 @@ document.body.addEventListener('click', async (event) => {
     main_body.appendChild(large_image_box)
     
   }
-  else if(document.querySelector(".large_box")){
-    console.log("image clicked")
-    
+  else if(document.querySelector(".large_box") && !event.target.closest(".large_box")){
       var large_image_box = document.querySelector(".large_box")
       document.querySelector(".main_container").removeChild(large_image_box)
     }
 })
 
 document.getElementById("load_more_btn").addEventListener("click", async (event) => {
-  console.log("load more")
   var imageCon = document.querySelector(".image_container");
   
   currentPage++
 
-  console.log(currentPage)
 
   if (orientationSort === "all"){
     var photos = await wrapper.SearchImages(searchQuery, currentPage, 30, orderBy)    
