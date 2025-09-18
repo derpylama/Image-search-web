@@ -37,7 +37,7 @@ p4 {
     box-sizing: content-box;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
+    gap: 1em;
 
 
     width: 100%;
@@ -73,6 +73,7 @@ p4 {
 .top_button_container {
     flex: 1;
     display: flex;
+    gap: 1em;
 }
 
 select {
@@ -157,7 +158,7 @@ select {
     min-width: 40%;
 
     width: auto;
-    max-height: 8rem;
+
     background-color: brown;
 }
 
