@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bildsök</title>
     <link rel="stylesheet" href="index.css">
-    <script src="apiWrapper.js"></script>
+    <script src="apiwrapper.js"></script>
     <script src="index.js" defer></script>
 
 </head>
@@ -42,7 +42,7 @@
                 <div class="centered_text">
                     <p2>Sök efter vad för bilder som du vill se. </p2>
                 </div>
-
+                <button id="load_more_btn">Load more</button>
             </div>
         </div>
     </div>

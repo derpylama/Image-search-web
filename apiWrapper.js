@@ -9,7 +9,7 @@ class ApiWrapper {
             var apiUrl = "api/searchimages.php?query=" + query + "&pageNum=" + pageNum + "&perPage=" + perPage + "&orderBy=" + orderBy + "&orientation=" + orientation
         }
         else{
-            var apiUrl = "api/searchImages.php?query=" + query + "&pageNum=" + pageNum + "&perPage=" + perPage + "&orderBy=" + orderBy
+            var apiUrl = "api/searchimages.php?query=" + query + "&pageNum=" + pageNum + "&perPage=" + perPage + "&orderBy=" + orderBy
         }
 
         return fetch(apiUrl)

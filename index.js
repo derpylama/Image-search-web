@@ -1,16 +1,11 @@
 
 const imageBox = document.querySelector(".image_container");
-
+var currentPage;
+var orientationSort;
+var orderBy;
+var searchQuery;
 
 var wrapper = new ApiWrapper()
-
-/*
-searchInput.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        const searchValue = searchInput.value;
-        console.log('Sökterm:', searchValue);
-    }
-});*/
 
 var search_input = document.getElementById("search_top")
 var main_body = document.getElementsByClassName("main_container")[0]
@@ -22,17 +17,21 @@ search_input.addEventListener("keydown", async (event) => {
 
     imageBox.replaceChildren();
 
-    var search_query = event.target.value
+    searchQuery = event.target.value
 
-    var orderBy = document.getElementById("select_sort").value
-    var orientation = document.getElementById("frame_sort").value
+    orderBy = document.getElementById("select_sort").value
+    orientationSort = document.getElementById("frame_sort").value
 
-    if(orientation === "all"){
-      var photos = await wrapper.SearchImages(search_query, 1, 30, orderBy)
+    if(orientationSort === "all"){
+      var photos = await wrapper.SearchImages(searchQuery, 1, 30, orderBy)
     }
     else{
-      var photos = await wrapper.SearchImages(search_query, 1, 30, orderBy, orientation)
+      var photos = await wrapper.SearchImages(searchQuery, 1, 30, orderBy, orientationSort)
     }
+
+    main_body.removeChild(document.querySelector(".centered_text"));
+
+    currentPage = 1;
 
     photos["results"].forEach(element => {
       
@@ -56,25 +55,26 @@ search_input.addEventListener("keydown", async (event) => {
 })
 
 
-
-
 document.body.addEventListener('click', async (event) => {
-
-
-  
   if (event.target.tagName == "IMG" && document.querySelector(".large_box") === null) {
     //Creates the popup box
     var large_image_box = document.createElement("div")
 
 
+
     if ((event.target.width < event.target.height)) {
       console.log(screen.width)
+
+    large_image_box.classList.add("border_radius_large", "large_box")
+
+    if (event.target.width < event.target.height) {
+
       console.log("Vertical")
-      large_image_box.classList.add("border_radius_large", "large_box", "popup_image_container_vertical")
+      large_image_box.classList.add("popup_image_container_vertical")
     }
     else {
       console.log("horizontal")
-      large_image_box.classList.add("border_radius_large", "large_box", "popup_image_container_horizontal")
+      large_image_box.classList.add("popup_image_container_horizontal")
     }
     
   
@@ -85,8 +85,7 @@ document.body.addEventListener('click', async (event) => {
     var text_container = document.createElement("div")
     text_container.classList = ("text_image_container")
     var image = event.target
-    let photoID = null;
-
+    var photoID = null;
 
     image_var.src = image.src
     if (document.getElementsByClassName("large_box")[0] != null) {
@@ -130,6 +129,37 @@ document.body.addEventListener('click', async (event) => {
     }
     
 
+    //Check if latitude exists and if so create a element with the information
+    if(photoData["location"]["position"]["latitude"] != null){
+      var longitudeP = document.createElement("p")
+      var latitudeP = document.createElement("p")
+      var mapMargin = 0.005
+
+      latitude = photoData["location"]["position"]["latitude"]
+      longitude = photoData["location"]["position"]["longitude"]
+
+      longitude.innerHTML = latitude
+      latitude.innerHTML = longitude
+      
+      text_container.appendChild(longitudeP)
+      text_container.appendChild(latitudeP)
+
+      
+
+      var mapIframe = document.createElement("iframe")
+      mapIframe.src =
+      "https://www.openstreetmap.org/export/embed.html?" +
+      "bbox=" +
+      (longitude - mapMargin) + "," +  // left (min lon)
+      (latitude - mapMargin) + "," +   // bottom (min lat)
+      (longitude + mapMargin) + "," +  // right (max lon)
+      (latitude + mapMargin) +         // top (max lat)
+      "&layer=mapnik" +
+      "&marker=" + latitude + "," + longitude;
+      text_container.appendChild(mapIframe)
+
+    }
+
     
     var tagCon = document.createElement("div")
     tagCon.classList.add("tag_con")
@@ -142,8 +172,6 @@ document.body.addEventListener('click', async (event) => {
       tagCon.appendChild(tag)
     })
 
-    
-
     image_var.src = photoData["urls"]["regular"]
     image_var.alt = photoData["alt_description"]
 
@@ -151,9 +179,6 @@ document.body.addEventListener('click', async (event) => {
       main_body.removeChild(document.querySelector(".large_box"))
     }
     large_image_box.appendChild(image_var)
-
-
-
 
 
 
@@ -172,6 +197,7 @@ document.body.addEventListener('click', async (event) => {
 
       latitude = photoData["location"]["position"]["latitude"]
       longitude = photoData["location"]["position"]["longitude"]
+
 
       longitude.innerHTML = latitude
       latitude.innerHTML = longitude
@@ -201,40 +227,49 @@ document.body.addEventListener('click', async (event) => {
 
     large_image_box.appendChild(image_info_container)
 
+
     main_body.appendChild(large_image_box)
     
-    
-
     }
-    else if (event.target.tagName === "IMG"){
+    else if(document.querySelector(".large_box")){
       console.log("image clicked")
+
+      var large_image_box = document.querySelector(".large_box")
+      document.querySelector(".main_container").removeChild(large_image_box)
     }
 })
 
+document.getElementById("load_more_btn").addEventListener("click", async (event) => {
+  console.log("load more")
+  var imageCon = document.querySelector(".image_container");
+  
+  currentPage++
 
-function clickedOutside(element,event) {
-  console.log(event.target,"TEXT",element)
-  if (!element.includes(event.target)) {
-    return true
+  console.log(currentPage)
+
+  if (orientationSort === "all"){
+    var photos = await wrapper.SearchImages(searchQuery, currentPage, 30, orderBy)    
   }
-}
-
-
-
-document.body.addEventListener('click', async (event) => {
-  if (!clickedOutside(".image_container > div",event)) {
-    console.log("Pressed image")
-
+  else{
+    var photos = await wrapper.SearchImages(searchQuery, currentPage, 30, orderBy, orientationSort)
   }
 
+  photos["results"].forEach(element => {
+      
+    var img = document.createElement("img")
+    var div = document.createElement("div")
+    var photoIDCon = document.createElement("p")
+    photoIDCon.style.display = "none"
+    photoIDCon.id = "photoID"
+
+    photoIDCon.innerHTML = element["id"]
+
+    img.src = element["urls"]["small"]
+
+    div.appendChild(img)
+    div.appendChild(photoIDCon)
 
 
-})
-
-function clickOutside(element) {
-  document.body.addEventListener("click", event => {
-    if (!element.contains(event.target)){
-
-    }
+    imageCon.appendChild(div)
   })
-}
+})
