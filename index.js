@@ -69,8 +69,7 @@ document.body.addEventListener('click', async (event) => {
       console.log("horizontal")
       large_image_box.classList.add("popup_image_container_horizontal")
     }
-    
-  
+
     var image_var = document.createElement("img")
     
     //Sets the image to the lower res tumbnail one while it waits for the api to give the higher res one
@@ -121,36 +120,7 @@ document.body.addEventListener('click', async (event) => {
       text_container.appendChild(country)
     }
     
-    //Check if latitude exists and if so create a element with the information
-    if(photoData["location"]["position"]["latitude"] != null){
-      var longitudeP = document.createElement("p")
-      var latitudeP = document.createElement("p")
-      var mapMargin = 0.005
-
-      latitude = photoData["location"]["position"]["latitude"]
-      longitude = photoData["location"]["position"]["longitude"]
-
-      longitude.innerHTML = latitude
-      latitude.innerHTML = longitude
-      
-      text_container.appendChild(longitudeP)
-      text_container.appendChild(latitudeP)
-
-      
-
-      var mapIframe = document.createElement("iframe")
-      mapIframe.src =
-      "https://www.openstreetmap.org/export/embed.html?" +
-      "bbox=" +
-      (longitude - mapMargin) + "," +  // left (min lon)
-      (latitude - mapMargin) + "," +   // bottom (min lat)
-      (longitude + mapMargin) + "," +  // right (max lon)
-      (latitude + mapMargin) +         // top (max lat)
-      "&layer=mapnik" +
-      "&marker=" + latitude + "," + longitude;
-      text_container.appendChild(mapIframe)
-
-    }
+    
     
     var tagCon = document.createElement("div")
     tagCon.classList.add("tag_con")
@@ -172,23 +142,57 @@ document.body.addEventListener('click', async (event) => {
     large_image_box.appendChild(image_var)
 
     large_image_box.appendChild(text_container)
-    large_image_box.appendChild(tagCon)
-
-
+    
+    
     image_info_container = document.createElement("div")
     image_info_container.classList = ("photo_info_container")
     image_info_container.appendChild(text_container)
+    
+    //Check if latitude exists and if so create a element with the information
+    if(photoData["location"]["position"]["latitude"] != null){
+      var longitudeP = document.createElement("p")
+      var latitudeP = document.createElement("p")
+      var mapMargin = 0.005
+      
+      latitude = photoData["location"]["position"]["latitude"]
+      longitude = photoData["location"]["position"]["longitude"]
+      
+      longitude.innerHTML = latitude
+      latitude.innerHTML = longitude
+      
+      text_container.appendChild(longitudeP)
+      text_container.appendChild(latitudeP)
+      
+      
+      
+      var mapIframe = document.createElement("iframe")
+      mapIframe.src =
+      "https://www.openstreetmap.org/export/embed.html?" +
+      "bbox=" +
+      (longitude - mapMargin) + "," +  // left (min lon)
+      (latitude - mapMargin) + "," +   // bottom (min lat)
+      (longitude + mapMargin) + "," +  // right (max lon)
+      (latitude + mapMargin) +         // top (max lat)
+      "&layer=mapnik" +
+      "&marker=" + latitude + "," + longitude;
+      
+      
+      var map_container = document.createElement("div")
+      map_container.classList = "map_container"
+      map_container.appendChild(mapIframe)
 
+      image_info_container.appendChild(map_container)
+    }
 
+    image_info_container.appendChild(tagCon)
     large_image_box.appendChild(image_info_container)
-
-
+    
     main_body.appendChild(large_image_box)
     
-    }
-    else if(document.querySelector(".large_box")){
-      console.log("image clicked")
-
+  }
+  else if(document.querySelector(".large_box")){
+    console.log("image clicked")
+    
       var large_image_box = document.querySelector(".large_box")
       document.querySelector(".main_container").removeChild(large_image_box)
     }
