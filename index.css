@@ -113,14 +113,12 @@ select {
 .large_box {
 
     min-height: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction:column;
+
 
     padding: 2vw 4vw;
 
     max-width: 80%;
-    min-height: 20vh;
+
     max-height: 82vh;
     background-color: rgb(80, 118, 80);
     position: fixed;
@@ -129,17 +127,27 @@ select {
 
     z-index: 100;
     box-shadow: 0 0 0 max(100vw, 100vh) rgba(0, 0, 0, 0.3);
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction:column;
 }
 .large_box > img {
     
-    flex: 1;
+    flex: 0 1 auto;
+    min-width: 0;
     min-height: 0;
     object-fit: contain;
     position: relative;
     width: 100%;
     height: auto;
-}
 
+
+
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
 
 
 
@@ -161,7 +169,8 @@ select {
     
 }
 .popup_image_container_vertical > img {
-    
+    height: 100%;
+    width: auto;
     max-height: 94%;
 
     
@@ -312,7 +321,7 @@ img {
         padding: 10px 0;
         flex-wrap: wrap;
         justify-content: flex-start;
-     
+
     }
     #search_top {
         width: 100%;
@@ -357,7 +366,7 @@ img {
     }
     .popup_image_container_vertical > .photo_info_container{
         flex-wrap: nowrap;
-        
+        width: 100%;
     }
     .popup_image_container_vertical > img {
     
@@ -365,7 +374,6 @@ img {
     
         
     }
-    
 
 
 
@@ -423,14 +431,8 @@ img {
     html {
         font-size: 34px;
     }
-
-
-
-
-
     .main_container {
         max-width: 3000px;
-        
         margin: auto;
     }
     #topbar{
