@@ -11,40 +11,40 @@
 
 </head>
 <body>
-    <div>
-        <div id="main">
-            <div class="main_container">
-                <div id="topbar"> 
-                    <!--Used for filling the left side of the topbar-->
-                    <div class="top_button_container"></div>
-                    <!--Topbar search bar-->
-                    <input id="search_top" name="q" type="search" placeholder="Sök" />
-                    <!--The right side topbar container used for sort dropdown buttons-->
-                    <div class="top_button_container">
-                        <select name="sort" id="select_sort">
-                            <option value="relevant">Relevant</option>
-                            <option value="latest">Latest</option>
-                        </select>
-                        <select name="searchBy" id="frame_sort">
-                            <option value="all">&#9675All</option>
-                            <option value="landscape">&#9645Landscape</option>
-                            <option value="portrait">&#9647Portrait</option>
-                            <option value="squarish">&#9635Squareish</option>
-                        </select>
-                    </div>
+
+    <div id="main">
+        <div class="main_container">
+            <div id="topbar"> 
+                <!--Used for filling the left side of the topbar-->
+                <div class="top_button_container"></div>
+                <!--Topbar search bar-->
+                <input id="search_top" name="q" type="search" placeholder="Sök" />
+                <!--The right side topbar container used for sort dropdown buttons-->
+                <div class="top_button_container">
+                    <select name="sort" id="select_sort">
+                        <option value="relevant">Relevant</option>
+                        <option value="latest">Latest</option>
+                    </select>
+                    <select name="searchBy" id="frame_sort">
+                        <option value="all">&#9675All</option>
+                        <option value="landscape">&#9645Landscape</option>
+                        <option value="portrait">&#9647Portrait</option>
+                        <option value="squarish">&#9635Squareish</option>
+                    </select>
+                </div>
 
 
 
-                </div>
-                <!--Search result image container -->
-                <div class="image_container">
-                </div>
-                <div class="centered_text">
-                    <p2>Sök efter vad för bilder som du vill se. </p2>
-                </div>
-                <button id="load_more_btn">Load more</button>
             </div>
+            <!--Search result image container -->
+            <div class="image_container">
+            </div>
+            <div class="centered_text">
+                <h2>Sök efter vad för bilder som du vill se. </h2>
+            </div>
+            <button id="load_more_btn"><h1>Ladda mer</h1></button>
         </div>
     </div>
+
 </body>
 </html>

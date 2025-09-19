@@ -7,42 +7,21 @@
 html {
     font-size: 100%;
 }
-
-p1 {
-    font-size: 40px;
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
 }
-p2 {
-    font-size: 2.1em;
-}
-
-p4 {
-    
-    font-size: 2em;
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-.side_margin {
-    margin: 0 50px;
-}
+
 
 /*Containers*/
 #main {
     width: 100%;
     min-height: 100vh;
-
-}
-#topbar {
-    flex: 0 1 auto;
-    display: flex;
-
-    box-sizing: content-box;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1em;
-
-
-    width: 100%;
-    margin-bottom: 10px;
-    height: auto;
 
 }
 .main_container {
@@ -55,6 +34,17 @@ p4 {
 }
 
 /*Topbar*/
+#topbar {
+    flex: 0 1 auto;
+    display: flex;
+    box-sizing: content-box;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+    margin-bottom: 10px;
+    height: auto;
+}
 #search_top {
     flex: auto;
 
@@ -64,7 +54,7 @@ p4 {
     width: 10em;
     display: block;
 
-    font-size: 1.6em;
+    font-size: 1.6rem;
     
     padding: 10px 28px;
     border-radius: 4vh;
@@ -77,6 +67,7 @@ p4 {
 }
 
 select {
+    font-size: 1.25rem;
     outline: none;
     background-color: rgb(153, 219, 142);
     border-radius: 10px;
@@ -101,7 +92,7 @@ select {
     width: auto;
     height: 20vh;
 
-    font-size: 50px;
+    font-size: 4rem;
     text-align: center;
 
     background-color: rgb(0, 128, 0);
@@ -244,7 +235,79 @@ select {
 
 
 
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.border_radius_large {
+    border-radius: 6vh;
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+    width: auto;
+    border-radius: 10px;
+    height: 100%;
+
+    
+    
+}
+
+
+.tag_con{
+    grid-area: tag;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    max-height: 100%;
+
+    flex: 0 1 auto;
+    height: auto;
+    align-content: flex-start;
+}
+
+.tag_item{
+    
+    
+    background-color: white;
+    padding: 3px;
+    width: auto;
+    border-radius: 3px;
+    text-align: center;
+    height: 1.4em;
+    font-size: 1rem;
+
+}
+
+
+
+.map_container > iframe {
+    width: 100%;
+    height: 100%;
+}
+
+
+.centered_text {
+    flex: 1 1 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10vh;
+
+}
+
 @media screen and ( max-width:600px){
+    html {
+        font-size: 18px;
+    }
+
+
+
+
     #topbar{
         padding: 10px 0;
         flex-wrap: wrap;
@@ -271,10 +334,6 @@ select {
         max-width: 100%;
     
     }
-    * {
-        font-size: 20px;
-    }
-
     .large_box {
         max-width: 95%;
         flex-direction: column;
@@ -322,6 +381,13 @@ select {
 }
 
 @media screen and ( min-width:600px) and (max-width:1200px){
+    html {
+        font-size: 20px;
+    }
+
+
+
+
     .main_container {
         width: auto;
         margin: auto;
@@ -335,6 +401,13 @@ select {
 }
 
 @media screen and ( min-width:1200px) and (max-width:2400px){
+    html {
+        font-size: 24px;
+    }
+
+
+
+
     .main_container {
         max-width:  1400px;
         margin: auto;
@@ -343,12 +416,18 @@ select {
         padding: 18px 0;
         height: 10vh;
     }
-    * {
-        font-size: 20px;
-    }
+
 }
 
 @media screen and ( min-width:2400px){
+    html {
+        font-size: 34px;
+    }
+
+
+
+
+
     .main_container {
         max-width: 3000px;
         
@@ -359,74 +438,5 @@ select {
         height: 10vh;
 
     }
-
-    * {
-        font-size: 34px;
-    }
     
 }
-
-html, body {
-    height: 100%;
-    width: 100%;
-}
-
-.border_radius_large {
-    border-radius: 6vh;
-}
-
-
-img {
-    display: block;
-    max-width: 100%;
-    width: auto;
-    border-radius: 10px;
-    height: 100%;
-
-    
-    
-}
-
-
-.tag_con{
-    grid-area: tag;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    max-height: 100%;
-
-    flex: 0 1 auto;
-    height: auto;
-    align-content: flex-start;
-}
-
-.tag_item{
-    
-    
-    background-color: white;
-    padding: 3px;
-    width: auto;
-    border-radius: 3px;
-    text-align: center;
-    height: 1.4em;
-    font-size: 0.8rem;
-
-}
-
-
-
-.map_container > iframe {
-    width: 100%;
-    height: 100%;
-}
-
-
-.centered_text {
-    flex: 1 1 auto;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10vh;
-
-}
-
