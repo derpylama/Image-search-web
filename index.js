@@ -29,7 +29,9 @@ search_input.addEventListener("keydown", async (event) => {
       var photos = await wrapper.SearchImages(searchQuery, 1, 30, orderBy, orientationSort)
     }
 
-    main_body.removeChild(document.querySelector(".centered_text"));
+    if(document.querySelector(".centered_text")){
+      main_body.removeChild(document.querySelector(".centered_text"));
+    }
 
     currentPage = 1;
 
