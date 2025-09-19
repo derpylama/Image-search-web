@@ -65,7 +65,6 @@ h2 {
     display: flex;
     gap: 1em;
 }
-
 select {
     font-size: 1.25rem;
     outline: none;
@@ -73,8 +72,6 @@ select {
     border-radius: 10px;
     height: 60px;
 }
-
-
 /*Container for image and image design*/
 .image_container {
 
@@ -113,24 +110,19 @@ select {
 .large_box {
 
     min-height: 0;
-
-
     padding: 2vw 4vw;
-
     max-width: 80%;
-
     max-height: 82vh;
     background-color: rgb(80, 118, 80);
     position: fixed;
     justify-self: center;
-
-
     z-index: 100;
     box-shadow: 0 0 0 max(100vw, 100vh) rgba(0, 0, 0, 0.3);
-
     box-sizing: border-box;
     display: flex;
     flex-direction:column;
+
+    height: 100%;
 }
 .large_box > img {
     
@@ -140,12 +132,11 @@ select {
     object-fit: contain;
     position: relative;
     width: 100%;
-    height: auto;
+    height: 100%;
 
 
 
-    max-width: 100%;
-    max-height: 100%;
+
     display: block;
 }
 
@@ -169,9 +160,9 @@ select {
     
 }
 .popup_image_container_vertical > img {
-    height: 100%;
+    max-height: 100%;
     width: auto;
-    max-height: 94%;
+
 
     
 }
@@ -344,6 +335,7 @@ img {
     
     }
     .large_box {
+        max-height: 90%;
         max-width: 95%;
         flex-direction: column;
     }
@@ -366,10 +358,12 @@ img {
     }
     .popup_image_container_vertical > .photo_info_container{
         flex-wrap: nowrap;
-        width: 100%;
+        max-width: 100%;
+        height: auto;
+        
     }
     .popup_image_container_vertical > img {
-    
+        max-width: 100%;
         max-height: 60%;
     
         
