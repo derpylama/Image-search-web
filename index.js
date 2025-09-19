@@ -150,7 +150,7 @@ document.body.addEventListener('click', async (event) => {
     image_info_container.appendChild(text_container)
     
     //Check if latitude exists and if so create a element with the information
-    if(photoData["location"]["position"]["latitude"] != null){
+    if(photoData["location"]["position"]["latitude"] != null && photoData["location"]["position"]["latitude"] != 0){
       var mapMargin = 0.005
       
       latitude = photoData["location"]["position"]["latitude"]
