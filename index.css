@@ -7,42 +7,21 @@
 html {
     font-size: 100%;
 }
-
-p1 {
-    font-size: 40px;
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
 }
-p2 {
-    font-size: 2.1em;
-}
-
-p4 {
-    
-    font-size: 2em;
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
-.side_margin {
-    margin: 0 50px;
-}
+
 
 /*Containers*/
 #main {
     width: 100%;
     min-height: 100vh;
-
-}
-#topbar {
-    flex: 0 1 auto;
-    display: flex;
-
-    box-sizing: content-box;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1em;
-
-
-    width: 100%;
-    margin-bottom: 10px;
-    height: auto;
 
 }
 .main_container {
@@ -55,6 +34,17 @@ p4 {
 }
 
 /*Topbar*/
+#topbar {
+    flex: 0 1 auto;
+    display: flex;
+    box-sizing: content-box;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    width: 100%;
+    margin-bottom: 10px;
+    height: auto;
+}
 #search_top {
     flex: auto;
 
@@ -64,7 +54,7 @@ p4 {
     width: 10em;
     display: block;
 
-    font-size: 1.6em;
+    font-size: 1.6rem;
     
     padding: 10px 28px;
     border-radius: 4vh;
@@ -77,6 +67,7 @@ p4 {
 }
 
 select {
+    font-size: 1.25rem;
     outline: none;
     background-color: rgb(153, 219, 142);
     border-radius: 10px;
@@ -101,7 +92,7 @@ select {
     width: auto;
     height: 20vh;
 
-    font-size: 50px;
+    font-size: 4rem;
     text-align: center;
 
     background-color: rgb(0, 128, 0);
@@ -122,14 +113,12 @@ select {
 .large_box {
 
     min-height: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction:column;
+
 
     padding: 2vw 4vw;
 
     max-width: 80%;
-    min-height: 20vh;
+
     max-height: 82vh;
     background-color: rgb(80, 118, 80);
     position: fixed;
@@ -138,17 +127,27 @@ select {
 
     z-index: 100;
     box-shadow: 0 0 0 max(100vw, 100vh) rgba(0, 0, 0, 0.3);
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction:column;
 }
 .large_box > img {
     
-    flex: 1;
+    flex: 0 1 auto;
+    min-width: 0;
     min-height: 0;
     object-fit: contain;
     position: relative;
     width: 100%;
     height: auto;
-}
 
+
+
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
 
 
 
@@ -170,7 +169,8 @@ select {
     
 }
 .popup_image_container_vertical > img {
-    
+    height: 100%;
+    width: auto;
     max-height: 94%;
 
     
@@ -244,127 +244,6 @@ select {
 
 
 
-@media screen and ( max-width:600px){
-    #topbar{
-        padding: 10px 0;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-     
-    }
-    #search_top {
-        width: 100%;
-        flex: 100%;
-        height: 4rem;
-    }
-    .top_button_container {
-        flex: 0;
-        order: 2;
-    }
-    .main_container {
-        width: auto ;
-        margin: auto;
-    }
-    .side_margin {
-        margin: 0 2vw;
-    }
-    .image_box > div {
-        max-width: 100%;
-    
-    }
-    * {
-        font-size: 20px;
-    }
-
-    .large_box {
-        max-width: 95%;
-        flex-direction: column;
-    }
-
-    .photo_info_container {
-        
-        max-width: 100%;
-        height: auto;
-
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr auto;
-        grid-template-areas: 
-        "map text"
-        "tag tag"
-    ;
-
-
-    
-
-    }
-    .popup_image_container_vertical > .photo_info_container{
-        flex-wrap: nowrap;
-        
-    }
-    .popup_image_container_vertical > img {
-    
-        max-height: 60%;
-    
-        
-    }
-    
-
-
-
-    .large_box > img {
-        width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-    }
-    
-    .map_container {
-        width: 100%;
-    }
-}
-
-@media screen and ( min-width:600px) and (max-width:1200px){
-    .main_container {
-        width: auto;
-        margin: auto;
-        max-width: 1000px;
-    }
-    .topbar{
-        padding: 12px 0;
-        height: 10vh;
-        width: 500px;
-    }
-}
-
-@media screen and ( min-width:1200px) and (max-width:2400px){
-    .main_container {
-        max-width:  1400px;
-        margin: auto;
-    }
-    #topbar{
-        padding: 18px 0;
-        height: 10vh;
-    }
-    * {
-        font-size: 20px;
-    }
-}
-
-@media screen and ( min-width:2400px){
-    .main_container {
-        max-width: 3000px;
-        
-        margin: auto;
-    }
-    #topbar{
-        padding: 20px 0;
-        height: 10vh;
-
-    }
-
-    * {
-        font-size: 34px;
-    }
-    
-}
 
 html, body {
     height: 100%;
@@ -409,7 +288,7 @@ img {
     border-radius: 3px;
     text-align: center;
     height: 1.4em;
-    font-size: 0.8rem;
+    font-size: 1rem;
 
 }
 
@@ -430,3 +309,136 @@ img {
 
 }
 
+@media screen and ( max-width:600px){
+    html {
+        font-size: 18px;
+    }
+
+
+
+
+    #topbar{
+        padding: 10px 0;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+
+    }
+    #search_top {
+        width: 100%;
+        flex: 100%;
+        height: 4rem;
+    }
+    .top_button_container {
+        flex: 0;
+        order: 2;
+    }
+    .main_container {
+        width: auto ;
+        margin: auto;
+    }
+    .side_margin {
+        margin: 0 2vw;
+    }
+    .image_box > div {
+        max-width: 100%;
+    
+    }
+    .large_box {
+        max-width: 95%;
+        flex-direction: column;
+    }
+
+    .photo_info_container {
+        
+        max-width: 100%;
+        height: auto;
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 
+        "map text"
+        "tag tag"
+    ;
+
+
+    
+
+    }
+    .popup_image_container_vertical > .photo_info_container{
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+    .popup_image_container_vertical > img {
+    
+        max-height: 60%;
+    
+        
+    }
+
+
+
+    .large_box > img {
+        width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+    
+    .map_container {
+        width: 100%;
+    }
+}
+
+@media screen and ( min-width:600px) and (max-width:1200px){
+    html {
+        font-size: 20px;
+    }
+
+
+
+
+    .main_container {
+        width: auto;
+        margin: auto;
+        max-width: 1000px;
+    }
+    .topbar{
+        padding: 12px 0;
+        height: 10vh;
+        width: 500px;
+    }
+}
+
+@media screen and ( min-width:1200px) and (max-width:2400px){
+    html {
+        font-size: 24px;
+    }
+
+
+
+
+    .main_container {
+        max-width:  1400px;
+        margin: auto;
+    }
+    #topbar{
+        padding: 18px 0;
+        height: 10vh;
+    }
+
+}
+
+@media screen and ( min-width:2400px){
+    html {
+        font-size: 34px;
+    }
+    .main_container {
+        max-width: 3000px;
+        margin: auto;
+    }
+    #topbar{
+        padding: 20px 0;
+        height: 10vh;
+
+    }
+    
+}
