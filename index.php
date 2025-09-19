@@ -18,7 +18,7 @@
                 <!--Used for filling the left side of the topbar-->
                 <div class="top_button_container"></div>
                 <!--Topbar search bar-->
-                <input id="search_top" name="q" type="search" placeholder="Sök" />
+                <input id="search_top" name="q" type="search" placeholder="Search" />
                 <!--The right side topbar container used for sort dropdown buttons-->
                 <div class="top_button_container">
                     <select name="sort" id="select_sort">
@@ -40,9 +40,9 @@
             <div class="image_container">
             </div>
             <div class="centered_text">
-                <h2>Sök efter vad för bilder som du vill se. </h2>
+                <h2>Make a search and the images will show up here</h2>
             </div>
-            <button id="load_more_btn"><h1>Ladda mer</h1></button>
+            <button id="load_more_btn"><h1>Load more</h1></button>
         </div>
     </div>
 
