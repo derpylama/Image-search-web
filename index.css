@@ -68,8 +68,9 @@ h2 {
 select {
     font-size: 1.25rem;
     outline: none;
-    background-color: rgb(153, 219, 142);
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding: 1px;
     height: 60px;
 }
 /*Container for image and image design*/
@@ -92,7 +93,7 @@ select {
     font-size: 4rem;
     text-align: center;
 
-    background-color: rgb(0, 128, 0);
+
     border-radius: 12px;
     padding: 6px;
     filter: drop-shadow(4px 10px 4px rgba(0, 0, 0, 0.538));
@@ -101,7 +102,7 @@ select {
 
 }
 .image_container > div:hover {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
     transform: scale(1.05);
 }
 
@@ -113,7 +114,7 @@ select {
     padding: 2vw 4vw;
     max-width: 80%;
     max-height: 82vh;
-    background-color: rgb(80, 118, 80);
+    
     position: fixed;
     justify-self: center;
     z-index: 100;
@@ -121,6 +122,8 @@ select {
     box-sizing: border-box;
     display: flex;
     flex-direction:column;
+    border-style: solid;
+    background-color: rgb(255, 255, 255);
 
     height: 100%;
 }
@@ -148,9 +151,11 @@ select {
     min-width: 40%;
 
     width: auto;
+    padding: 2px;
 
-    background-color: brown;
     overflow: hidden;
+    border-bottom: 4px solid black;
+    
 }
 
 .popup_image_container_vertical {
@@ -232,6 +237,7 @@ select {
 
 
     height: auto;
+    border-bottom: 4px solid black;
 }
 
 
@@ -269,6 +275,7 @@ img {
     flex: 0 1 auto;
     height: auto;
     align-content: flex-start;
+    border-bottom: 4px solid black;
 }
 
 .tag_item{
@@ -299,6 +306,12 @@ img {
     align-items: center;
     margin-bottom: 10vh;
 
+}
+
+#load_more_btn {
+    border-radius: 1rem;
+    padding: 4px;
+    margin: 1rem 0;
 }
 
 @media screen and ( max-width:600px){
