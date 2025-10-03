@@ -25,7 +25,6 @@
                 // Split key=value
                 [$key, $value] = explode('=', $line, 2);
 
-                // Remove quotes if present
                 $value = trim($value, "\"' ");
 
                 // Set as environment variable
@@ -63,12 +62,6 @@
         }
 
         public function SearchPhoto(int $pageNum = 1, string $searchQuery, int $perPage = 30, string $orderBy = "", string $orientation = ""){
-            /*if($orientation != ""){
-                $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . urlencode($searchQuery) . "&per_page=" . $perPage . "&order_by=" . $orderBy . "&orientation=" . $orientation;
-            }
-            else{
-                $photoSearchEndpoint = self::BASEAPIURL . "/search/photos?page=" . $pageNum . "&query=" . $searchQuery . "&per_page=" . $perPage . "&order_by=" . $orderBy;   
-            }*/
 
             $queryParams = [
                 'page' => $pageNum,
